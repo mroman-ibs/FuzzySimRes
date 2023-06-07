@@ -1,0 +1,124 @@
+#' Apply epistemic test for one or two fuzzy samples.
+#'
+#' @description
+#' `EpistemicTest` calculates the p-value for the given real-valued statistical test using one of the
+#' epistemic bootstrap approaches.
+#'
+#' @details
+#' This is general procedure that can be used to invoke other epistemic bootstrap tests: \code{AverageStatisticEpistemicTest}
+#' (if the \code{algorithm} is set to \code{"avs"}), \code{MultiStatisticEpistemicTest} (if \code{algorithm="ms"}), and
+#' \code{ResamplingStatisticEpistemicTest} (for \code{algorithm="res"}).
+#' For additional details about these procedures and their parameters, see the respective functions.
+#'
+#'
+#'
+#' @return
+#' The output is given in the form of a real number (the p-value) for the selected statistical test.
+#'
+#'
+#'
+#'
+#' @param sample1 Sample of fuzzy numbers given in the form of a list or as a single number.
+#'
+#' @param sample2 Sample of fuzzy numbers given in the form of a list or as a single number (two-sample test case) or
+#'  \code{NULL} (one-sample test case).
+#'
+#' @param algorithm Type of the epistemic bootstrap
+#' algorithm used to calculate the output p-value (possible values: \code{avs, ms, res}).
+#'
+#' @param ... Additional arguments passed to the epistemic test.
+#'
+#' @family epistemic bootstrap statistical test
+#'
+#' @seealso \code{\link{MultiStatisticEpistemicTest}} for the epistemic bootstrap test related to multi-statistic approach,
+#' \code{\link{ResamplingStatisticEpistemicTest}} for the epistemic bootstrap test related to resampling statistics,
+#' \code{\link{AverageStatisticEpistemicTest}} for the epistemic bootstrap test related to averaging statistics,
+#'
+#' @examples
+#'
+#' # seed PRNG
+#'
+#' set.seed(1234)
+#'
+#' # generate two independent initial fuzzy samples
+#'
+#' list1<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+#' increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' type="trapezoidal")
+#'
+#'
+#' list2<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+#' increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' type="trapezoidal")
+#'
+#' # apply the Kolmogorov-Smirnov two sample test for two different samples
+#' # with the average statistics approach
+#'
+#' EpistemicTest(list1,list2,cutsNumber = 30)
+#'
+#' # apply the Kolmogorov-Smirnov two sample test for two different samples
+#' # with the multi-statistic and antithetic approach
+#'
+#' EpistemicTest(list1,list2,algorithm = "ms",bootstrapMethod = "anti")
+#'
+#'
+#'@references
+#'
+#'
+#' Grzegorzewski, P., Romaniuk, M. (2022)
+#' Bootstrap Methods for Epistemic Fuzzy Data.
+#' International Journal of Applied Mathematics and Computer Science, 32(2)
+#'
+#' Grzegorzewski, P., Romaniuk, M. (2022)
+#' Bootstrapped Kolmogorov-Smirnov Test for Epistemic Fuzzy Data.
+#' Communications in Computer and Information Science, CCIS 1602, pp. 494-507, Springer
+#'
+#' Gagolewski, M., Caha, J. (2021) FuzzyNumbers Package: Tools to deal with fuzzy numbers in R.
+#' R package version 0.4-7, https://cran.r-project.org/web/packages=FuzzyNumbers
+#'
+#'
+#'
+#'
+#' @export
+
+
+
+
+
+EpistemicTest <- function(sample1,sample2,algorithm="avs",...)
+{
+  # check parameters
+
+  if(!(algorithm %in% c("avs","ms","res")))
+  {
+    stop("Parameter algorithm should be a proper name of epistemic bootstrap test (avs, ms or res).")
+  }
+
+
+  # check and use the respective epistemic bootstrap test
+
+  if(algorithm=="avs") {
+
+    output <- AverageStatisticEpistemicTest(sample1=sample1,sample2=sample2,...)
+
+  }
+
+  if(algorithm=="ms") {
+
+    output <- MultiStatisticEpistemicTest(sample1=sample1,sample2=sample2,...)
+
+  }
+
+  if(algorithm=="res") {
+
+    output <- ResamplingStatisticEpistemicTest(sample1=sample1,sample2=sample2,...)
+
+  }
+
+  return(output)
+
+}

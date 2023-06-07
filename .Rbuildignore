@@ -1,0 +1,9 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^test.R
+^README\.Rmd$
+references.bib
+README.html
+^cran-comments\.md$
+^CRAN-SUBMISSION$
+^data-raw$

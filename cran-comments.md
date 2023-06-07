@@ -1,0 +1,86 @@
+## R CMD check results
+
+0 errors | 0 warnings | 1 note
+
+* This is a new release.
+
+## rhub::check_for_cran()
+
+Build ID: 	FuzzySimRes_0.1.0.tar.gz-ce40f57938634ad0a48f06ca6b256090
+Platform: 	Windows Server 2022, R-devel, 64 bit
+Submitted: 	2 minutes 32.6 seconds ago
+Build time: 	2 minutes 31 seconds
+
+* checking CRAN incoming feasibility ... [11s] NOTE
+Maintainer: 'Maciej Romaniuk <mroman@ibspan.waw.pl>'
+
+New submission
+
+
+Possibly misspelled words in DESCRIPTION:
+  Coroianua (11:6)
+  Epistemic (3:46)
+  Grzegorzewski (12:101, 13:40)
+  PLFNs (10:111)
+  Romaniuk (12:119, 13:58)
+  al (11:19)
+  epistemic (12:63, 14:107, 15:56)
+  et (11:16)
+  
+- Everything is OK with these words.
+
+* checking for non-standard things in the check directory ... NOTE
+Found the following files/directories:
+  ''NULL''
+
+* checking for detritus in the temp directory ... NOTE
+Found the following files/directories:
+  'lastMiKTeXException'
+  
+- Everything seems to be OK.
+
+Build ID: 	FuzzySimRes_0.1.0.tar.gz-828e28fa9fc84b8584fc0c08992ce1a9
+Platform: 	Fedora Linux, R-devel, clang, gfortran
+Submitted: 	8 minutes 18.3 seconds ago
+Build time: 	8 minutes 16.2 seconds
+
+* checking CRAN incoming feasibility ... [6s/22s] NOTE
+Maintainer: ‘Maciej Romaniuk <mroman@ibspan.waw.pl>’
+
+New submission
+
+Possibly misspelled words in DESCRIPTION:
+  Coroianua (11:6)
+  Grzegorzewski (12:101, 13:40)
+  PLFNs (10:111)
+  Romaniuk (12:119, 13:58)
+  al (11:19)
+  et (11:16)
+
+* checking HTML version of manual ... NOTE
+Skipping checking HTML validation: no command 'tidy' found
+
+- Everything seems to be OK.
+
+
+Build ID: 	FuzzySimRes_0.1.0.tar.gz-6cfcf9aadce343bda49697f822595e35
+Platform: 	Ubuntu Linux 20.04.1 LTS, R-release, GCC
+Submitted: 	9 minutes 59.8 seconds ago
+Build time: 	9 minutes 57.2 seconds
+
+The same notes as the above-mentioned.
+
+
+Build ID: 	FuzzySimRes_0.1.0.tar.gz-e31f6264ba9242999afb14a608427ead
+Platform: 	Debian Linux, R-devel, GCC ASAN/UBSAN
+Submitted: 	33 minutes 47.8 seconds ago
+Build time: 	33 minutes 42.9 seconds
+
+The same notes as the above-mentioned.
+  
+
+
+
+
+
+

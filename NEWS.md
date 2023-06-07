@@ -1,3 +1,6 @@
 # FuzzySimRes 0.1.0
 
-* Added a `NEWS.md` file to track changes to the package.
+* First version of the package.
+* Added basic functions related to the epistemic bootstrap and simulation of fuzzy variables.
+* Added real-lfe data set
+
