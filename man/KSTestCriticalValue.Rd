@@ -2,7 +2,7 @@
 % Please edit documentation in R/KSTestCriticalValue.R
 \name{KSTestCriticalValue}
 \alias{KSTestCriticalValue}
-\title{Simple wrapper to provide p-value for the K-S one- and two-sample test.}
+\title{A simple wrapper to provide the p-value for the K-S one- and two-sample test.}
 \usage{
 KSTestCriticalValue(criticalValue, n1, n2)
 }
@@ -25,8 +25,8 @@ based on the respective function from the \code{stats} package.
 The function calculates the p-value for the one- and two-sample Kolmogorov-Smirnov test
 using the respective function from the \code{stats} package.
 The necessary information is the critical value given by \code{criticalValue} parameter,
-and sizes of one or two samples (parameters \code{n1, n2}, respectively).
-The output is used in one of the epistemic bootstrap methods, if the one- or two-sample K-S test is applied.
+and the sizes of one or two samples (parameters \code{n1, n2}, respectively).
+The output is used in one of the epistemic bootstrap methods if the one- or two-sample K-S test is applied.
 }
 \examples{
 

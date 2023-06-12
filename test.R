@@ -500,6 +500,30 @@ controlChartData
 
 ?FuzzySimRes
 
+?AntitheticBootstrap
+
+?AverageStatisticEpistemicTest
+
+?CombinePValues
+
+?EpistemicBootstrap
+
+?EpistemicCorrectedVariance
+
+?EpistemicMean
+
+?EpistemicTest
+
+?KSTestCriticalValue
+
+?MultiStatisticEpistemicTest
+
+?ResamplingStatisticEpistemicTest
+
+?SimulateFuzzyNumber
+
+?SimulateSample
+
 usethis::use_readme_rmd()
 
 usethis::use_news_md()
@@ -518,3 +542,6 @@ rhub::validate_email(email = NULL, token = NULL)
 
 devtools::submit_cran()
 
+citation("FuzzySimRes")
+
+usethis::use_github()

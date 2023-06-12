@@ -1,4 +1,4 @@
-#' Generate bootstrap sample with the epistemic antithetic bootstrap.
+#' Generate a bootstrap sample with the epistemic antithetic bootstrap.
 #'
 #' @description
 #' `AntitheticBootstrap` generates the secondary (real-valued) sample from the fuzzy-valued
@@ -9,12 +9,12 @@
 #' initial sample which consists of fuzzy numbers. The procedure applies the special version of the epistemic bootstrap,
 #' known as the antithetic bootstrap.
 #' The initial sample should be given in the form of a list of numbers or a single number.
-#' These values have to be the fuzzy numbers defined as in the \code{FuzzyNumbers} package.
+#' These values have to be the fuzzy numbers defined in the \code{FuzzyNumbers} package.
 #'
 #'
 #' @return
-#' The output is given in the form of real-valued matrix, where the number of rows is equal to number of cuts, and the
-#' number of the columns is equal to length of the initial sample.
+#' The output is given in the form of the real-valued matrix, where the number of rows is equal to the number of cuts, and the
+#' number of columns is equal to the length of the initial sample.
 #'
 #' @importFrom stats runif
 #'

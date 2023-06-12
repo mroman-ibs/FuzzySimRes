@@ -5,7 +5,7 @@
 #' epistemic bootstrap approaches.
 #'
 #' @details
-#' This is general procedure that can be used to invoke other epistemic bootstrap tests: \code{AverageStatisticEpistemicTest}
+#' This is a general procedure that can be used to invoke other epistemic bootstrap tests: \code{AverageStatisticEpistemicTest}
 #' (if the \code{algorithm} is set to \code{"avs"}), \code{MultiStatisticEpistemicTest} (if \code{algorithm="ms"}), and
 #' \code{ResamplingStatisticEpistemicTest} (for \code{algorithm="res"}).
 #' For additional details about these procedures and their parameters, see the respective functions.

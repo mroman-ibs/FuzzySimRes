@@ -1,3 +1,22 @@
+I have prepared the new version (0.1.2, previous version: 0.1.1) of my package. 
+
+The main differences are listed below:
+- Spell-checking of all help files to correct some errors
+- DOIs were checked. If the problem persists, please inform me about its place in a more detailed way.
+
+
+
+
+I have prepared the new version (0.1.1, previous version: 0.1.0) of my package. 
+
+The main differences are listed below:
+- Added the missing field in DESCRIPTION file concerning Luis Carvalho:
+
+  person("Luis", "Carvalho", email = "lexcarvalho at gmail.com", role = c("ctb","cph"),
+    comment = c("Procedures from kolmim package in the kolmim.c file"))
+
+
+
 ## R CMD check results
 
 0 errors | 0 warnings | 1 note

@@ -19,25 +19,25 @@ SimulateFuzzyNumber(
 }
 \arguments{
 \item{originalRandomDist}{Name of the random generator used to create the "true origin" of fuzzy number (as
-defined in \code{stats} package).}
+defined in the \code{stats} package).}
 
 \item{parametersOriginalRD}{List of parameters required by the random generator used
-to create the "true origin" of fuzzy number.}
+to create the "true origin" of a fuzzy number.}
 
 \item{increasesCoreRandomDist}{Name of the random generator used to create the increases of the core of fuzzy
-number (as defined in \code{stats} package).}
+number (as defined in the \code{stats} package).}
 
 \item{parametersCoreIncreasesRD}{List of parameters required by the random generator used
 to create the increases of the core of trapezoidal number.}
 
 \item{supportLeftRandomDist}{Name of the random generator used to create the increase of the left support of fuzzy
-number (as defined in \code{stats} package).}
+number (as defined in the \code{stats} package).}
 
 \item{parametersSupportLeftRD}{List of parameters required by the random generator used
 to create the increase of the left support of fuzzy  number.}
 
 \item{supportRightRandomDist}{Name of the random generator used to create the increase of the right support of fuzzy
-number (as defined in \code{stats} package).}
+number (as defined in the \code{stats} package).}
 
 \item{parametersSupportRightRD}{List of parameters required by the random generator used
 to create the increase of the right support of trapezoidal number.}
@@ -47,19 +47,19 @@ to create the increase of the right support of trapezoidal number.}
 \item{type}{Type of the generated fuzzy number ("triangular", "trapezoidal", or "PLFN").}
 }
 \value{
-The output is given as a triangular, trapezoidal or PLFN fuzzy number as in the \code{FuzzyNumbers} package.
+The output is given as a triangular, trapezoidal, or PLFN fuzzy number as in the \code{FuzzyNumbers} package.
 }
 \description{
 `SimulateFuzzyNumber` generates a single fuzzy number using the
 various random distributions based on the functions from the \code{stats} package.
 }
 \details{
-The procedure randomly generates fuzzy number (a triangular, trapezoidal or PLFN one) with the
+The procedure randomly generates a fuzzy number (a triangular, trapezoidal, or PLFN one) with the
 original, increases of its core, and increases of its support given by some random distributions.
 The names of the respective functions of these probability distributions should be in the form
- required by \code{stats} package.
+ required by the \code{stats} package.
 For triangular fuzzy number, \code{increasesRandomDist} is not used.
-For both triangular and trapezoidal fuzzy number, \code{knotNumbers} is not used.
+For both triangular and trapezoidal fuzzy numbers, \code{knotNumbers} is not used.
 
 
 The "true origin" of the fuzzy number is independently drawn from the random distribution using

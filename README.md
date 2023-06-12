@@ -18,7 +18,7 @@ Przemyslaw Grzegorzewski and Romaniuk 2022)):
 
 - application of special resampling procedures,
 - application of real-valued statistical tests for fuzzy data,
-- estimation of statisical characteristics (like the mean) of fuzzy
+- estimation of statistical characteristics (like the mean) of a fuzzy
   sample.
 
 Additionally, the special epistemic fuzzy real-life data set is provided
@@ -62,8 +62,8 @@ The following procedures are available in the library:
     epistemic bootstrap, and resampling statistics method.
 - Additional procedures:
   - *CombinePValues* - combining the p-values of a statistical test into
-    single value,
-  - *KSTestCriticalValue* - calculation of the p-value for given
+    a single value,
+  - *KSTestCriticalValue* - calculation of the p-value for a given
     critical value in the case of the one- and two-sample
     Kolmogorov-Smirnow test.
 - Dataset:

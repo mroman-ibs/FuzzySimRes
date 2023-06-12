@@ -4,12 +4,12 @@
 #' `EpistemicMean` calculates the mean of the fuzzy sample using the epistemic bootstrap approach.
 #'
 #' @details
-#' For the given initial sample, the function estimate its mean using the standard (if \code{bootstrapMethod} is set to
+#' For the given initial sample, the function estimates its mean using the standard (if \code{bootstrapMethod} is set to
 #' \code{"std"}) or the antithetic (when \code{bootstrapMethod="anti"}) epistemic bootstrap.
 #' The initial sample should be given in the form of a list of numbers or a single number.
-#' These values have to be the fuzzy numbers defined as in the \code{FuzzyNumbers} package.
+#' These values have to be the fuzzy numbers defined in the \code{FuzzyNumbers} package.
 #' Additionally, the standard error (SE) of the mean is calculated or its mean squared error (MSE).
-#' This second type of the error is used if some value (other than \code{NA}) is provided for the \code{trueValue} parameter.
+#' This second type of error is used if some value (other than \code{NA}) is provided for the \code{trueValue} parameter.
 #'
 #'
 #' @return

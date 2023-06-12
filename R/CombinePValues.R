@@ -1,10 +1,10 @@
-#' Combine several p-values to obtain the single value.
+#' Combine several p-values to obtain a single value.
 #'
 #' @description
 #' `CombinePValues` calculates the single combined p-value using several input p-values.
 #'
 #' @details
-#' The procedure combines many p-values into the single output using the selected statistical method.
+#' The procedure combines many p-values into a single output using the selected statistical method.
 #' This function is used as a tool in one of the epistemic bootstrap approaches to provide the necessary final p-value in the
 #' statistical test. To combine the p-values different statistical methods can be applied.
 #' Apart from the \code{mean} method (i.e., simple average of all p-values), other methods
@@ -21,7 +21,7 @@
 #' @param pValues A vector of the p-values.
 #'
 #' @param method Method used to combine the p-values. The possible methods are the same as in the \code{palasso} package
-#' plus \code{mean} approach.
+#' plus the \code{mean} approach.
 #'
 
 #'
@@ -41,7 +41,7 @@
 #'
 #' Westfall, P. H. (2005). Combining p-values.
 #' Encyclopedia of Biostatistics, doi: 10.1002/0470011815.b2a15181
-#'
+#' <https://doi.org/10.1002/0470011815.b2a15181>
 #'
 #'
 #'

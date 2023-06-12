@@ -48,7 +48,7 @@ user-defined function. To choose the one-sample variant of the test, \code{sampl
 Additional parameters to the statistical test can be passed with \code{...}
 
 As two input samples (\code{sample1} and \code{sample2}, respectively), two lists of fuzzy numbers should be provided.
-These values have to be the fuzzy numbers defined as in the \code{FuzzyNumbers} package (triangular, trapezoidal, etc.).
+These values have to be the fuzzy numbers defined in the \code{FuzzyNumbers} package (triangular, trapezoidal, etc.).
 If only one-sample test is used, \code{sample1} is related to the fuzzy statistical sample, and \code{sample2=NULL} should
 be set.
 

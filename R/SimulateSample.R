@@ -1,16 +1,16 @@
-#' Simulate sample of random fuzzy numbers.
+#' Simulate a sample of random fuzzy numbers.
 #'
 #' @description
 #' `SimulateSample` generates the whole sample of fuzzy numbers using the
 #' various random distributions based on the functions from the \code{stats} package.
 #'
 #' @details
-#' The procedure randomly generates the independent sample of fuzzy numbers (triangulars, trapezoidals or PLFNs) with the
+#' The procedure randomly generates the independent sample of fuzzy numbers (triangulars, trapezoidals, or PLFNs) with the
 #' original, increases of its core, and increases of its support given by some random distributions.
 #' The names of the respective functions of these probability distributions should be in the form
-#'  required by \code{stats} package.
+#'  required by the \code{stats} package.
 #' For triangular fuzzy number, \code{increasesRandomDist} is not used.
-#' For both triangular and trapezoidal fuzzy number, \code{knotNumbers} is not used.
+#' For both triangular and trapezoidal fuzzy numbers, \code{knotNumbers} is not used.
 #'
 #'
 #' The "true origin" of the fuzzy number is independently drawn from the random distribution using
@@ -24,33 +24,33 @@
 #'
 #'
 #' @return
-#' The output is given as a list of triangular, trapezoidal or PLFN fuzzy numbers as in the \code{FuzzyNumbers} package.
+#' The output is given as a list of triangular, trapezoidal, or PLFN fuzzy numbers as in the \code{FuzzyNumbers} package.
 #'
 #'
 #'
 #'
 #' @param n Size of the simulated sample
 #'
-#' @param originalRandomDist Name of the random generator used to create the "true origin" of fuzzy number (as
-#' defined in \code{stats} package).
+#' @param originalRandomDist Name of the random generator used to create the "true origin" of a fuzzy number (as
+#' defined in the \code{stats} package).
 #'
 #' @param parametersOriginalRD List of parameters required by the random generator used
 #' to create the "true origin" of fuzzy number.
 #'
 #' @param increasesCoreRandomDist Name of the random generator used to create the increases of the core of fuzzy
-#'  number (as defined in \code{stats} package).
+#'  number (as defined in the \code{stats} package).
 #'
 #' @param parametersCoreIncreasesRD List of parameters required by the random generator used
 #' to create the increases of the core of trapezoidal number.
 #'
 #' @param supportLeftRandomDist Name of the random generator used to create the increases of the left support of fuzzy
-#'   number (as defined in \code{stats} package).
+#'   number (as defined in the \code{stats} package).
 #'
 #' @param parametersSupportLeftRD List of parameters required by the random generator used
 #' to create the increases of the left support of fuzzy  number.
 #'
 #' @param supportRightRandomDist Name of the random generator used to create the increases of the right support of fuzzy
-#'  number (as defined in \code{stats} package).
+#'  number (as defined in the \code{stats} package).
 #'
 #' @param parametersSupportRightRD List of parameters required by the random generator used
 #' to create the increases of the right support of trapezoidal number.

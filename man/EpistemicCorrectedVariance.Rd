@@ -28,7 +28,7 @@ For the given initial sample, the function calculates the corrected estimator of
  using the standard (if \code{bootstrapMethod} is set to
 \code{"std"}) or the antithetic (when \code{bootstrapMethod="anti"}) epistemic bootstrap.
 The initial sample should be given in the form of a list of numbers or a single number.
-These values have to be the fuzzy numbers defined as in the \code{FuzzyNumbers} package.
+These values have to be the fuzzy numbers defined in the \code{FuzzyNumbers} package.
 The corrected estimator of the variance separates the within- and between-group variations.
 For the details, see (Grzegorzewski, Romaniuk, 2022a).
 }
