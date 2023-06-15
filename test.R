@@ -545,3 +545,8 @@ devtools::submit_cran()
 citation("FuzzySimRes")
 
 usethis::use_github()
+
+usethis::create_github_token()
+
+gitcreds::gitcreds_set()
+credentials::set_github_pat()

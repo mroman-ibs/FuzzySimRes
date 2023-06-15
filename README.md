@@ -72,6 +72,13 @@ The following procedures are available in the library:
 
 ## Installation
 
+You can install the latest development version of FuzzyResampling with:
+
+``` r
+library(devtools)
+install_github("mroman-ibs/FuzzyResampling")
+```
+
 You can install the latest stable version from CRAN with:
 
 ``` r
