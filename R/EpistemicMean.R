@@ -50,11 +50,11 @@
 #'
 #' # calculate the mean using the standard epistemic bootstrap approach
 #'
-#' EpistemicMean(list1,cutsNumber = 30)
+#' EpistemicMean(list1$value,cutsNumber = 30)
 #'
 #' # calculate the mean using the antithetic epistemic bootstrap approach
 #'
-#' EpistemicMean(list1,cutsNumber = 30,bootstrapMethod="anti")
+#' EpistemicMean(list1$value,cutsNumber = 30,bootstrapMethod="anti")
 #'
 #'
 #'@references

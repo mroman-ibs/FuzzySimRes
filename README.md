@@ -107,7 +107,7 @@ type="trapezoidal")
 
 # apply the epistemic bootstrap with 10 cuts
 
-EpistemicBootstrap (sample1, cutsNumber=10)
+EpistemicBootstrap (sample1$value, cutsNumber=10)
 #>                X1       X2         X3         X4          X5
 #> alpha1  1.1497756 1.892964 -0.4412416 -0.4123010 -0.21887696
 #> alpha2  1.0789047 2.256274  0.8043010 -0.2897991  0.21447852
@@ -122,7 +122,7 @@ EpistemicBootstrap (sample1, cutsNumber=10)
 
 # apply the antithetic bootstrap with 10 cuts
 
-AntitheticBootstrap (sample1, cutsNumber=10)
+AntitheticBootstrap (sample1$value, cutsNumber=10)
 #>               X1       X2          X3         X4          X5
 #> alpha1  1.715099 2.348629  0.84791420 -0.4155065 -0.10278774
 #> alpha2  1.657023 2.315396  0.75226172 -0.2950119 -0.18807131
@@ -137,7 +137,7 @@ AntitheticBootstrap (sample1, cutsNumber=10)
 
 # calculate the mean using the standard epistemic bootstrap approach
 
-EpistemicMean(sample1,cutsNumber = 30)
+EpistemicMean(sample1$value,cutsNumber = 30)
 #> $value
 #> [1] 0.60163
 #> 
@@ -146,7 +146,7 @@ EpistemicMean(sample1,cutsNumber = 30)
 
 # calculate the median using the antithetic epistemic bootstrap approach
 
-EpistemicEstimator(sample1,estimator="median",cutsNumber = 30,bootstrapMethod="anti")
+EpistemicEstimator(sample1$value,estimator="median",cutsNumber = 30,bootstrapMethod="anti")
 #> $value
 #> [1] 0.136565
 #> 
@@ -172,19 +172,19 @@ type="trapezoidal")
 # apply the Kolmogorov-Smirnov two-sample test for two different samples
 # with the average statistics approach
 
-EpistemicTest(list1,list2,cutsNumber = 30)
+EpistemicTest(list1$value,list2$value,cutsNumber = 30)
 #> [1] 0.8319696
 
 # apply the Kolmogorov-Smirnov two-sample test for two different samples
 # with the multi-statistic and antithetic approach
 
-EpistemicTest(list1,list2,algorithm = "ms",bootstrapMethod = "anti")
+EpistemicTest(list1$value,list2$value,algorithm = "ms",bootstrapMethod = "anti")
 #> [1] 0.8319696
 
 # apply the Kolmogorov-Smirnov one-sample test
 # with the averaging statistic approach for the first sample
 
-AverageStatisticEpistemicTest(list1,sample2=NULL,cutsNumber = 30,y="pnorm")
+AverageStatisticEpistemicTest(list1$value,sample2=NULL,cutsNumber = 30,y="pnorm")
 #> [1] 0.6101717
 ```
 

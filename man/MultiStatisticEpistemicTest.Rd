@@ -80,16 +80,16 @@ type="trapezoidal")
 
 # apply the Kolmogorov-Smirnov two sample test for two different samples
 
-MultiStatisticEpistemicTest(list1,list2,cutsNumber = 30)
+MultiStatisticEpistemicTest(list1$value,list2$value,cutsNumber = 30)
 
 # and the same sample twice
 
-MultiStatisticEpistemicTest(list1,list1,cutsNumber = 30,bootstrapMethod = "anti",
+MultiStatisticEpistemicTest(list1$value,list1$value,cutsNumber = 30,bootstrapMethod = "anti",
 combineMethod = "mean")
 
 # and the one-sample K-S test for the standard normal distribution
 
-MultiStatisticEpistemicTest(list1,sample2=NULL,cutsNumber = 30,y="pnorm")
+MultiStatisticEpistemicTest(list1$value,sample2=NULL,cutsNumber = 30,y="pnorm")
 
 
 }

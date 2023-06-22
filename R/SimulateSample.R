@@ -24,7 +24,11 @@
 #'
 #'
 #' @return
-#' The output is given as a list of triangular, trapezoidal, or PLFN fuzzy numbers as in the \code{FuzzyNumbers} package.
+#' The output is given as a list with values:
+#' \code{original} - a vector with "true origins" of the simulated fuzzy numbers generated
+#'  from the random distribution \code{originalRandomDist},
+#' and \code{value} -- a list of the simulated triangular, trapezoidal, or PLFN fuzzy number as in the
+#'  \code{FuzzyNumbers} package.
 #'
 #'
 #'
@@ -138,31 +142,39 @@ SimulateSample <- function(n=1,originalRandomDist, parametersOriginalRD,
     stop("Parameter n should be integer value and > 0")
   }
 
-  # create list
+  # create vector and list
 
-  output <- list(n,NA)
+  outputOriginal <- rep(NA, n)
+
+  outputValues <- list(n,NA)
 
   # generate random values
 
   for (i in 1:n) {
 
-    output[[i]] <- SimulateFuzzyNumber(originalRandomDist=originalRandomDist,
-    parametersOriginalRD=parametersOriginalRD,
-    increasesCoreRandomDist=increasesCoreRandomDist,
-    parametersCoreIncreasesRD=parametersCoreIncreasesRD,
-    supportLeftRandomDist=supportLeftRandomDist,
-    parametersSupportLeftRD=parametersSupportLeftRD,
-    supportRightRandomDist=supportRightRandomDist,
-    parametersSupportRightRD=parametersSupportRightRD,
-    knotNumbers=knotNumbers,
-    type=type)
+    singleOutput <- SimulateFuzzyNumber(originalRandomDist=originalRandomDist,
+                                        parametersOriginalRD=parametersOriginalRD,
+                                        increasesCoreRandomDist=increasesCoreRandomDist,
+                                        parametersCoreIncreasesRD=parametersCoreIncreasesRD,
+                                        supportLeftRandomDist=supportLeftRandomDist,
+                                        parametersSupportLeftRD=parametersSupportLeftRD,
+                                        supportRightRandomDist=supportRightRandomDist,
+                                        parametersSupportRightRD=parametersSupportRightRD,
+                                        knotNumbers=knotNumbers,
+                                        type=type)
+
+    # put the original and value in the respective places
+
+    outputOriginal[i] <- singleOutput$original
+
+    outputValues[[i]] <- singleOutput$value
 
   }
 
 
-  names(output) <- noquote(paste("X", 1:n, sep=""))
+  names(outputValues) <- noquote(paste("X", 1:n, sep=""))
 
 
-  return(output)
+  return(list(original=outputOriginal,value=outputValues))
 
 }

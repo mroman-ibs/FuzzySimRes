@@ -100,19 +100,19 @@ type="trapezoidal")
 
 # apply the epistemic bootstrap with 10 cuts
 
-EpistemicBootstrap (sample1, cutsNumber=10)
+EpistemicBootstrap (sample1$value, cutsNumber=10)
 
 # apply the antithetic bootstrap with 10 cuts
 
-AntitheticBootstrap (sample1, cutsNumber=10)
+AntitheticBootstrap (sample1$value, cutsNumber=10)
 
 # calculate the mean using the standard epistemic bootstrap approach
 
-EpistemicMean(sample1,cutsNumber = 30)
+EpistemicMean(sample1$value,cutsNumber = 30)
 
 # calculate the median using the antithetic epistemic bootstrap approach
 
-EpistemicEstimator(sample1,estimator="median",cutsNumber = 30,bootstrapMethod="anti")
+EpistemicEstimator(sample1$value,estimator="median",cutsNumber = 30,bootstrapMethod="anti")
 
 
 # generate two independent initial fuzzy samples
@@ -133,17 +133,17 @@ type="trapezoidal")
 # apply the Kolmogorov-Smirnov two-sample test for two different samples
 # with the average statistics approach
 
-EpistemicTest(list1,list2,cutsNumber = 30)
+EpistemicTest(list1$value,list2$value,cutsNumber = 30)
 
 # apply the Kolmogorov-Smirnov two-sample test for two different samples
 # with the multi-statistic and antithetic approach
 
-EpistemicTest(list1,list2,algorithm = "ms",bootstrapMethod = "anti")
+EpistemicTest(list1$value,list2$value,algorithm = "ms",bootstrapMethod = "anti")
 
 # apply the Kolmogorov-Smirnov one-sample test
 # with the averaging statistic approach for the first sample
 
-AverageStatisticEpistemicTest(list1,sample2=NULL,cutsNumber = 30,y="pnorm")
+AverageStatisticEpistemicTest(list1$value,sample2=NULL,cutsNumber = 30,y="pnorm")
 
 ```
 

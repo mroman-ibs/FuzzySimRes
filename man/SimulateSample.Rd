@@ -50,7 +50,11 @@ to create the increases of the right support of trapezoidal number.}
 \item{type}{Type of the generated fuzzy number ("triangular", "trapezoidal", or "PLFN").}
 }
 \value{
-The output is given as a list of triangular, trapezoidal, or PLFN fuzzy numbers as in the \code{FuzzyNumbers} package.
+The output is given as a list with values:
+\code{original} - a vector with "true origins" of the simulated fuzzy numbers generated
+ from the random distribution \code{originalRandomDist},
+and \code{value} -- a list of the simulated triangular, trapezoidal, or PLFN fuzzy number as in the
+ \code{FuzzyNumbers} package.
 }
 \description{
 `SimulateSample` generates the whole sample of fuzzy numbers using the

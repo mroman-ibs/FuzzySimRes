@@ -24,7 +24,10 @@
 #'
 #'
 #' @return
-#' The output is given as a triangular, trapezoidal, or PLFN fuzzy number as in the \code{FuzzyNumbers} package.
+#' The output is given as a list of two values:
+#' \code{original} with "true origin" of the simulated fuzzy number generated
+#'  from the random distribution \code{originalRandomDist},
+#' and \code{value} -- the simulated triangular, trapezoidal, or PLFN fuzzy number as in the \code{FuzzyNumbers} package.
 #'
 #'
 #'
@@ -153,13 +156,13 @@ SimulateFuzzyNumber <- function(originalRandomDist, parametersOriginalRD,
 
     leftSupport <- do.call(supportLeftRandomDist, append(1,parametersSupportLeftRD))
 
-    core <- do.call(originalRandomDist, append(1,parametersOriginalRD))
+    origin <- do.call(originalRandomDist, append(1,parametersOriginalRD))
 
     rightSupport <- do.call(supportRightRandomDist, append(1,parametersSupportLeftRD))
 
     # use proper function to simulate the output
 
-    output <- FuzzyNumbers::TriangularFuzzyNumber (core-leftSupport,core,core+rightSupport)
+    output <- FuzzyNumbers::TriangularFuzzyNumber (origin-leftSupport,origin,origin+rightSupport)
 
   }
 
@@ -266,8 +269,8 @@ SimulateFuzzyNumber <- function(originalRandomDist, parametersOriginalRD,
   }
 
 
+    outputList <- list(original=origin,value=output)
 
-
-    return(output)
+    return(outputList)
 
 }

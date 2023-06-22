@@ -42,7 +42,7 @@
 #'
 #' # apply the epistemic bootstrap with 10 cuts
 #'
-#' EpistemicBootstrap (sample1, cutsNumber=10)
+#' EpistemicBootstrap (sample1$value, cutsNumber=10)
 #'
 #'
 #'

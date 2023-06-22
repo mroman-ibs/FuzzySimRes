@@ -54,12 +54,12 @@ type="trapezoidal")
 # apply the Kolmogorov-Smirnov two sample test for two different samples
 # with the average statistics approach
 
-EpistemicTest(list1,list2,cutsNumber = 30)
+EpistemicTest(list1$value,list2$value,cutsNumber = 30)
 
 # apply the Kolmogorov-Smirnov two sample test for two different samples
 # with the multi-statistic and antithetic approach
 
-EpistemicTest(list1,list2,algorithm = "ms",bootstrapMethod = "anti")
+EpistemicTest(list1$value,list2$value,algorithm = "ms",bootstrapMethod = "anti")
 
 
 }

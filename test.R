@@ -82,6 +82,8 @@ liczba1["knots"]
 plot(liczba1)
 
 
+
+
 liczba2<- SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
                     increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
                     supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
@@ -94,6 +96,13 @@ liczba2
 ?SimulateFuzzyNumber
 
 c(noquote(paste("X", 1:3, sep="")))
+
+
+SimulateSample(3,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+               type="trapezoidal")
 
 SimulateSample(n=3,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
                increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
@@ -108,13 +117,15 @@ lista1<-SimulateSample(3,originalRandomDist="rnorm",parametersOriginalRD=list(me
                supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
                type="trapezoidal")
 
-lista1[[1]]
+lista1
 
 lista1a<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
                        increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
                        supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
                        supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
                        type="trapezoidal")
+
+lista1a
 
 
 lista1b<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
@@ -225,7 +236,7 @@ liczba1
 
 AntitheticBootstrap(liczba1,10)
 
-AntitheticBootstrap(lista1,10)
+AntitheticBootstrap(lista1$value,10)
 
 ?AntitheticBootstrap
 
@@ -268,11 +279,13 @@ combineGroupedPValues(p,grupowanie,method = "tippet")$p.value
 
 ?CombinePValues
 
-MultiStatisticEpistemicTest(lista1a,lista1a,cutsNumber = 10)
+lista1a$value[[1]]
 
-MultiStatisticEpistemicTest(lista1a,lista1a[[1]],cutsNumber = 10)
+MultiStatisticEpistemicTest(lista1a$value,lista1a$value,cutsNumber = 10)
 
-MultiStatisticEpistemicTest(lista1a,lista1a,cutsNumber = 1)
+MultiStatisticEpistemicTest(lista1a$value,lista1a$value[[1]],cutsNumber = 10)
+
+MultiStatisticEpistemicTest(lista1a$value,lista1a$value,cutsNumber = 1)
 
 MultiStatisticEpistemicTest(lista2,lista2,cutsNumber = 30)
 
@@ -325,7 +338,7 @@ AverageStatisticEpistemicTest(lista3,lista3,cutsNumber = 30,bootstrapMethod = "a
 
 ResamplingStatisticEpistemicTest(lista1a,lista1b,cutsNumber = 30,K=20)
 
-ResamplingStatisticEpistemicTest(lista1a,lista1b,cutsNumber = 30,K=40)
+ResamplingStatisticEpistemicTest(lista1a$value,lista1b$value,cutsNumber = 30,K=40)
 
 
 ResamplingStatisticEpistemicTest(lista1a,sample2=NULL,cutsNumber = 30,K=20,y="pnorm")
@@ -370,7 +383,7 @@ pkolmogorov(0.15,50)
 
 EpistemicMean(lista1)
 
-EpistemicMean(lista2,cutsNumber = 10, bootstrapMethod = "anti")
+EpistemicMean(lista2$value,cutsNumber = 10, bootstrapMethod = "anti")
 
 ?EpistemicMean
 
@@ -394,7 +407,7 @@ EpistemicMean(lista1,cutsNumber = 10,trueValue = "ch")
 
 EpistemicEstimator(lista2,estimator = "median",cutsNumber = 30, bootstrapMethod = "anti")
 
-EpistemicEstimator(lista3,estimator = "median",cutsNumber = 30, bootstrapMethod = "anti")
+EpistemicEstimator(lista3$value,estimator = "median",cutsNumber = 30, bootstrapMethod = "anti")
 
 EpistemicEstimator(lista2,estimator = median,cutsNumber = 30, bootstrapMethod = "anti")
 
@@ -405,7 +418,7 @@ EpistemicEstimator(lista3,estimator = "mean",cutsNumber = 30, bootstrapMethod = 
 EpistemicEstimator(lista3,estimator = "mean",cutsNumber = 30, bootstrapMethod = "anti", trueValue = 0.4)
 
 
-EpistemicCorrectedVariance (lista2, cutsNumber=2, bootstrapMethod="std")
+EpistemicCorrectedVariance (lista2$value, cutsNumber=2, bootstrapMethod="std")
 
 EpistemicCorrectedVariance (lista1a, cutsNumber=10, bootstrapMethod="anti")
 

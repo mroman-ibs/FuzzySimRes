@@ -52,11 +52,11 @@
 #'
 #' # calculate the standard deviation using the standard epistemic bootstrap approach
 #'
-#' EpistemicEstimator(list1,estimator="sd",cutsNumber = 30)
+#' EpistemicEstimator(list1$value,estimator="sd",cutsNumber = 30)
 #'
 #' # calculate the median using the antithetic epistemic bootstrap approach
 #'
-#' EpistemicEstimator(list1,estimator="median",cutsNumber = 30,bootstrapMethod="anti")
+#' EpistemicEstimator(list1$value,estimator="median",cutsNumber = 30,bootstrapMethod="anti")
 #'
 #'
 #'@references

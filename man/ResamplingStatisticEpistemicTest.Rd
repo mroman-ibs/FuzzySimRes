@@ -83,11 +83,11 @@ type="trapezoidal")
 
 # apply the Kolmogorov-Smirnov two sample test for two different samples
 
-ResamplingStatisticEpistemicTest(list1,list2,cutsNumber = 30)
+ResamplingStatisticEpistemicTest(list1$value,list2$value,cutsNumber = 30)
 
 # and the same sample twice
 
-ResamplingStatisticEpistemicTest(list1,list1,cutsNumber = 30,bootstrapMethod = "anti")
+ResamplingStatisticEpistemicTest(list1$value,list1$value,cutsNumber = 30,bootstrapMethod = "anti")
 
 
 }

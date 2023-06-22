@@ -42,7 +42,7 @@ type="trapezoidal")
 
 # apply the antithetic bootstrap with 10 cuts
 
-AntitheticBootstrap (sample1, cutsNumber=10)
+AntitheticBootstrap (sample1$value, cutsNumber=10)
 
 
 

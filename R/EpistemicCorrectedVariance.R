@@ -47,11 +47,11 @@
 #'
 #' # calculate the corrected variance using the standard epistemic bootstrap approach
 #'
-#' EpistemicCorrectedVariance(list1,cutsNumber = 30)
+#' EpistemicCorrectedVariance(list1$value,cutsNumber = 30)
 #'
 #' # calculate the corrected variance using the antithetic epistemic bootstrap approach
 #'
-#' EpistemicCorrectedVariance(list1,cutsNumber = 30,bootstrapMethod="anti")
+#' EpistemicCorrectedVariance(list1$value,cutsNumber = 30,bootstrapMethod="anti")
 #'
 #'
 #'@references
