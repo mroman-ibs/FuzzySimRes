@@ -1,3 +1,10 @@
+I have prepared the new version (0.2.0, previous version: 0.1.2) of my package. 
+
+The main differences are listed below:
+- Instead of only values, the functions that generate fuzzy numbers also return their "true origins"
+
+
+
 I have prepared the new version (0.1.2, previous version: 0.1.1) of my package. 
 
 The main differences are listed below:

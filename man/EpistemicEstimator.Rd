@@ -21,12 +21,12 @@ EpistemicEstimator(
 
 \item{bootstrapMethod}{The standard (\code{std}) or antithetic (\code{anti}) method used for the epistemic bootstrap.}
 
-\item{trueValue}{The true (usually unknown) value of the estimated parameter. If \code{NA} is used for this parameter,
-the SE is calculated.}
+\item{trueValue}{The true (usually unknown) value of the estimated parameter. If value other than \code{NA} is used,
+then the MSE is calculated.}
 }
 \value{
-The output is given in the form of a list consisting of two real numbers: \code{value} - the obtained
-estimator, and \code{SE} - its SE/MSE.
+The output is given in the form of a list consisting of real numbers: \code{value} - the obtained
+estimator, \code{SE} - its SE, and \code{MSE} - its MSE.
 }
 \description{
 `EpistemicEstimator` calculates the selected estimator and its SE/MSE for the fuzzy sample using the epistemic bootstrap approach.
@@ -39,7 +39,7 @@ The initial sample should be given in the form of a list of numbers or a single 
 These values have to be the fuzzy numbers defined as in the \code{FuzzyNumbers} package.
 The estimators are calculated for each epistemic bootstrap sample (i.e. based on the rows of the output matrix),
 then these values are averaged to give the final output (i.e. the mean for all cuts is obtained).
-Additionally, the standard error (SE) of this estimator is calculated or its mean squared error (MSE).
+Additionally, the standard error (SE) of this estimator is calculated and its mean squared error (MSE).
 This second type of the error is used if some value (other than \code{NA}) is provided for the \code{trueValue} parameter.
 }
 \examples{

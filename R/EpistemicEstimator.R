@@ -11,13 +11,13 @@
 #' These values have to be the fuzzy numbers defined as in the \code{FuzzyNumbers} package.
 #' The estimators are calculated for each epistemic bootstrap sample (i.e. based on the rows of the output matrix),
 #' then these values are averaged to give the final output (i.e. the mean for all cuts is obtained).
-#' Additionally, the standard error (SE) of this estimator is calculated or its mean squared error (MSE).
+#' Additionally, the standard error (SE) of this estimator is calculated and its mean squared error (MSE).
 #' This second type of the error is used if some value (other than \code{NA}) is provided for the \code{trueValue} parameter.
 #'
 #'
 #' @return
-#' The output is given in the form of a list consisting of two real numbers: \code{value} - the obtained
-#' estimator, and \code{SE} - its SE/MSE.
+#' The output is given in the form of a list consisting of real numbers: \code{value} - the obtained
+#' estimator, \code{SE} - its SE, and \code{MSE} - its MSE.
 #'
 #' @seealso \code{\link{EpistemicMean}} for the epistemic estimator of the mean,
 #' \code{\link{EpistemicCorrectedVariance}} for the corrected epistemic estimator of the variance
@@ -31,8 +31,8 @@
 #'
 #' @param bootstrapMethod The standard (\code{std}) or antithetic (\code{anti}) method used for the epistemic bootstrap.
 #'
-#' @param trueValue The true (usually unknown) value of the estimated parameter. If \code{NA} is used for this parameter,
-#' the SE is calculated.
+#' @param trueValue The true (usually unknown) value of the estimated parameter. If value other than \code{NA} is used,
+#' then the MSE is calculated.
 #'
 #' @examples
 #'
@@ -146,17 +146,17 @@ EpistemicEstimator <- function(fuzzySample, estimator="sd", cutsNumber=1, bootst
 
   # calculate the SE/MSE
 
-  if(is.na(trueValue)) {
+  SE <- stats::sd(estimators)
 
-    SE <- stats::sd(estimators)
+  MSE <- NA
 
-  } else {
+  if(!is.na(trueValue)) {
 
-    SE <- sum((estimators-trueValue)^2) / cutsNumber
+    MSE <- sum((estimators-trueValue)^2) / cutsNumber
 
   }
 
-  output <- list(value = outputEstimator, SE = SE)
+  output <- list(value = outputEstimator, SE = SE, MSE = MSE)
 
   return(output)
 

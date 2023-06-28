@@ -6,6 +6,12 @@ library(testthat)
 
 
 
+library(roxygen2)
+
+library(testthat)
+
+
+
 document()
 
 
@@ -415,7 +421,7 @@ EpistemicEstimator(lista2,estimator = median,cutsNumber = 30, bootstrapMethod = 
 
 EpistemicEstimator(lista3,estimator = "mean",cutsNumber = 30, bootstrapMethod = "anti")
 
-EpistemicEstimator(lista3,estimator = "mean",cutsNumber = 30, bootstrapMethod = "anti", trueValue = 0.4)
+EpistemicEstimator(lista3$value,estimator = "mean",cutsNumber = 30, bootstrapMethod = "anti", trueValue = 0.4)
 
 
 EpistemicCorrectedVariance (lista2$value, cutsNumber=2, bootstrapMethod="std")
