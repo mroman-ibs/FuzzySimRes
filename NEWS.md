@@ -1,3 +1,8 @@
+# FuzzySimRes 0.2.1
+
+* Functions for the estimators now calculate both the SE and MSE.
+
+
 # FuzzySimRes 0.2.0
 
 * Functions that generate fuzzy numbers now return also their "true origins" (originals) apart from fuzzy variables.

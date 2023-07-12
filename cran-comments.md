@@ -1,3 +1,9 @@
+I have prepared the new version (0.2.1, previous version: 0.2.0) of my package. 
+
+The main differences are listed below:
+- Functions for the estimators now calculate both the SE and MSE.
+
+
 I have prepared the new version (0.2.0, previous version: 0.1.2) of my package. 
 
 The main differences are listed below:

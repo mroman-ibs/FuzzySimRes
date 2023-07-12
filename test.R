@@ -569,3 +569,5 @@ usethis::create_github_token()
 
 gitcreds::gitcreds_set()
 credentials::set_github_pat()
+
+AntitheticBootstrap(lista1$value,cutsNumber=10)
