@@ -571,3 +571,27 @@ gitcreds::gitcreds_set()
 credentials::set_github_pat()
 
 AntitheticBootstrap(lista1$value,cutsNumber=10)
+
+usethis::use_testthat(3)
+
+use_test("SimulateFuzzyNumber")
+
+SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                    supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                    supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                    type=NA)
+
+SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                    increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                    supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                    supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                    knotNumbers = -2,
+                    type="PLFN")
+
+
+SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                    increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                    supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                    supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                    knotNumbers = 0,
+                    type="PLFN")

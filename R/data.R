@@ -6,7 +6,7 @@
 #' @format
 #' A list of 90 triangular fuzzy numbers (as defined in \code{FuzzyNumbers} package) that contains
 #' 30 samples, each of size three.
-#' Each variable in the list has its label \code{X.y.z}, where \code{y} is the number of sample, and \code{z} is the
+#' Each observation in the list has its label \code{X.y.z}, where \code{y} is the number of sample, and \code{z} is the
 #' number of the element in this sample.
 #'
 #' @source
