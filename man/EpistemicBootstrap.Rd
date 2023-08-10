@@ -14,6 +14,7 @@ EpistemicBootstrap(fuzzySample, cutsNumber = 1)
 \value{
 The output is given in the form of a real-valued matrix, where the number of rows is equal to the number of cuts, and the
 number of columns is equal to the length of the initial sample.
+Rows are denoted with the randomly drawn values of alpha for the consecutive alpha-cuts.
 }
 \description{
 `EpistemicBootstrap` generates the secondary (real-valued) sample from the fuzzy-valued

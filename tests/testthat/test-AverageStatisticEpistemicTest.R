@@ -1,0 +1,160 @@
+test_that("Function returns correct values", {
+
+  # starting values
+
+  set.seed(123456)
+
+  testSample3 <-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                               type="trapezoidal")
+
+  testSample4 <-SimulateSample(10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0.2,sd=1),
+                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                               type="trapezoidal")
+
+  testSample5 <-SimulateSample(10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                               knotNumbers = 10,
+                               type="PLFN")
+
+  testSample6 <-SimulateSample(15,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=2),
+                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                               knotNumbers = 10,
+                               type="PLFN")
+
+
+
+  # tests
+
+  expect_snapshot(
+
+    {set.seed(1234567)
+
+      AverageStatisticEpistemicTest(testSample3$value,testSample4$value,cutsNumber = 15)}
+  )
+
+
+  expect_snapshot(
+
+    {set.seed(1234567)
+
+      AverageStatisticEpistemicTest(testSample3$value,testSample4$value,cutsNumber = 25,bootstrapMethod = "anti")}
+  )
+
+  expect_snapshot(
+
+    {set.seed(1234567)
+
+      AverageStatisticEpistemicTest(testSample5$value,testSample6$value,cutsNumber = 25)}
+  )
+
+
+  expect_snapshot(
+
+    {set.seed(1234567)
+
+      AverageStatisticEpistemicTest(testSample5$value,testSample6$value,cutsNumber = 5,bootstrapMethod = "anti")}
+  )
+
+
+  expect_snapshot(
+
+    {set.seed(1234567)
+
+      AverageStatisticEpistemicTest(testSample3$value,sample2 = NULL,cutsNumber = 5,y="pnorm")}
+  )
+
+  expect_snapshot(
+
+    {set.seed(1234567)
+
+      AverageStatisticEpistemicTest(testSample4$value,sample2 = NULL,cutsNumber = 30,y="pnorm",bootstrapMethod = "anti")}
+  )
+
+
+  expect_snapshot(
+
+    {set.seed(1234567)
+
+      AverageStatisticEpistemicTest(testSample5$value,sample2 = NULL,cutsNumber = 30,y="pexp")}
+  )
+
+
+
+})
+
+
+
+test_that("Function reports errors", {
+
+  # starting values
+
+  set.seed(123456)
+
+  testSample3 <-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                               type="trapezoidal")
+
+  # tests
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = -5),
+
+               "Parameter cutsNumber should be integer value and > 0")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = NA),
+
+               "Parameter cutsNumber should be integer value and > 0")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = c(3,4)),
+
+               "Parameter cutsNumber should be a single value")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10, bootstrapMethod = "x"),
+
+               "Parameter bootstrapMethod should be a proper name of epistemic bootstrap method - std or anti")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10, bootstrapMethod = -2),
+
+               "Parameter bootstrapMethod should be a proper name of epistemic bootstrap method - std or anti")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10, bootstrapMethod = NA),
+
+               "Parameter bootstrapMethod should be a proper name of epistemic bootstrap method - std or anti")
+
+  expect_error(AverageStatisticEpistemicTest(NA,testSample3$value,cutsNumber = 10),
+
+               "Parameter sample1 should consist of fuzzy numbers - single value or list")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,NA,cutsNumber = 10),
+
+               "Parameter sample2 should consist of fuzzy numbers - single value or list")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,c(1,23),cutsNumber = 10),
+
+               "Parameter sample2 should consist of fuzzy numbers - single value or list")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,list(1,23,list(123)),cutsNumber = 10),
+
+               "Parameter sample2 should consist of fuzzy numbers - single value or list")
+
+  expect_error(AverageStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10, bootstrapMethod = c("std","anti")),
+
+               "Parameter bootstrapMethod should be a single value")
+
+
+
+})
+
+
+
+

@@ -14,6 +14,7 @@ AntitheticBootstrap(fuzzySample, cutsNumber = 1)
 \value{
 The output is given in the form of the real-valued matrix, where the number of rows is equal to the number of cuts, and the
 number of columns is equal to the length of the initial sample.
+Rows are denoted with the randomly drawn values of alpha for the consecutive alpha-cuts.
 }
 \description{
 `AntitheticBootstrap` generates the secondary (real-valued) sample from the fuzzy-valued

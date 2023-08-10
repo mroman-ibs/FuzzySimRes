@@ -1,4 +1,4 @@
-test_that("Function reports errors", {
+test_that("Function returns correct values", {
 
   # starting values
 
@@ -52,6 +52,12 @@ test_that("Function reports errors", {
                           knotNumbers = 0,
                           type="PLFN")}
   )
+
+})
+
+
+
+test_that("Function reports errors", {
 
 
 

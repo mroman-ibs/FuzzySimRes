@@ -14,6 +14,7 @@
 #' @return
 #' The output is given in the form of a real-valued matrix, where the number of rows is equal to the number of cuts, and the
 #' number of columns is equal to the length of the initial sample.
+#' Rows are denoted with the randomly drawn values of alpha for the consecutive alpha-cuts.
 #'
 #' @importFrom stats runif
 #'
@@ -86,7 +87,7 @@ EpistemicBootstrap <- function(fuzzySample, cutsNumber=1)
   if(!isFuzzyData(fuzzySample))
   {
 
-    stop("Parameter fuzzySample should consist of fuzzy numbers (single value or list)")
+    stop("Parameter fuzzySample should consist of fuzzy numbers - single value or list")
 
   }
 
@@ -100,14 +101,18 @@ EpistemicBootstrap <- function(fuzzySample, cutsNumber=1)
 
 
 
-  namesOutput <- list(noquote(paste("alpha", 1:cutsNumber, sep="")),
-                      noquote(paste("X", 1:length(fuzzySample), sep="")))
-
-  output <- matrix(NA, nrow = cutsNumber, ncol = length(fuzzySample), dimnames = namesOutput)
 
   # generate random cuts
 
   selectedCuts <- runif(cutsNumber,min = 0, max = 1)
+
+  # prepare output
+
+  namesOutput <- list(round(selectedCuts,digits = 4),
+                      noquote(paste("X", 1:length(fuzzySample), sep="")))
+
+  output <- matrix(NA, nrow = cutsNumber, ncol = length(fuzzySample), dimnames = namesOutput)
+
 
   # cat("selectedCuts: ", selectedCuts, "\n")
 

@@ -99,13 +99,18 @@ EpistemicEstimator <- function(fuzzySample, estimator="sd", cutsNumber=1, bootst
   if(!isFuzzyData(fuzzySample))
   {
 
-    stop("Parameter fuzzySample should consist of fuzzy numbers (single value or list)")
+    stop("Parameter fuzzySample should consist of fuzzy numbers - single value or list")
 
+  }
+
+  if(length(bootstrapMethod) > 1)
+  {
+    stop("Parameter bootstrapMethod should be a single value")
   }
 
   if(!(bootstrapMethod %in% c("std","anti")))
   {
-    stop("Parameter bootstrapMethod should be a proper name of epistemic bootstrap method (std or anti)")
+    stop("Parameter bootstrapMethod should be a proper name of epistemic bootstrap method - std or anti")
   }
 
   if(length(trueValue) != 1)

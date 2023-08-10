@@ -58,7 +58,18 @@ isFuzzyData <- function(x)
   if(length(x) == 1)
   {
 
-    return(isFuzzyNumber(x))
+    if(is.list(x)==TRUE)
+    {
+
+      return(isFuzzyNumber(x[[1]]))
+
+    } else {
+
+      return(isFuzzyNumber(x))
+
+    }
+
+
 
   }
 

@@ -146,7 +146,7 @@ SimulateSample <- function(n=1,originalRandomDist, parametersOriginalRD,
 
   outputOriginal <- rep(NA, n)
 
-  outputValues <- list(n,NA)
+  outputValues <- list(NA)
 
   # generate random values
 

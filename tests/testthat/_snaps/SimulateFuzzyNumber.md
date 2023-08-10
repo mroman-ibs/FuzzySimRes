@@ -1,4 +1,4 @@
-# Function reports errors
+# Function returns correct values
 
     Code
       set.seed(1234567)

@@ -93,9 +93,14 @@ EpistemicTest <- function(sample1,sample2,algorithm="avs",...)
 {
   # check parameters
 
+  if(length(algorithm) > 1)
+  {
+    stop("Parameter algorithm should be a single value")
+  }
+
   if(!(algorithm %in% c("avs","ms","res")))
   {
-    stop("Parameter algorithm should be a proper name of epistemic bootstrap test (avs, ms or res).")
+    stop("Parameter algorithm should be a proper name of epistemic bootstrap test - avs, ms or res")
   }
 
 

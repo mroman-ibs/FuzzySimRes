@@ -125,6 +125,10 @@ lista1<-SimulateSample(3,originalRandomDist="rnorm",parametersOriginalRD=list(me
 
 lista1
 
+EpistemicBootstrap(lista1$value,cutsNumber = 10)
+
+AntitheticBootstrap(lista1$value,cutsNumber = 3)
+
 lista1a<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
                        increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
                        supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
@@ -561,7 +565,7 @@ rhub::validate_email(email = NULL, token = NULL)
 
 devtools::submit_cran()
 
-citation("FuzzySimRes")
+citation("palasso")
 
 usethis::use_github()
 
@@ -595,3 +599,153 @@ SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,
                     supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
                     knotNumbers = 0,
                     type="PLFN")
+
+use_test("CombinePValues")
+
+
+SimulateSample(n=1.5,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+               type="triangular")
+
+
+set.seed(123456)
+
+testSample1 <- SimulateSample(n=10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                              increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                              supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                              supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                              type="trapezoidal")
+
+EpistemicBootstrap(testSample1$value,cutsNumber = list(2,4))
+
+
+EpistemicBootstrap(12,cutsNumber = 10)
+
+EpistemicBootstrap(list(12,3),cutsNumber = 10)
+
+EpistemicBootstrap("x",cutsNumber = 10)
+
+CombinePValues(c(0.5,0.37,0.45,0.1,0),method = "mean")
+
+mean(c(0.5,0.37,0.45))
+
+CombinePValues(c(0.5,0.37,0.45),method = "fisher")
+
+CombinePValues(c(0.5,0.37,0.45),method = "tippet")
+
+CombinePValues(c(0.5,0.37,0.45),method = "sidak")
+
+set.seed(123456)
+
+testSample1 <- SimulateSample(n=10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                              increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                              supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                              supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                              type="trapezoidal")
+testSample1
+
+
+EpistemicEstimator(testSample1$value,estimator = "mean", cutsNumber = 0.5)
+
+listaTest1 <- list(NA)
+
+listaTest1[[2]] <- 1
+
+listaTest1
+
+
+EpistemicEstimator(testSample1$value,estimator = "mean", bootstrapMethod = NA, cutsNumber = 10)
+
+EpistemicEstimator(testSample1$value,estimator = "sd", bootstrapMethod = "std", cutsNumber = 10, trueValue = "x")
+
+EpistemicEstimator(testSample1$value,estimator = "sd", bootstrapMethod = "std", cutsNumber = 10, trueValue = c(2,3))
+
+testSample2 <- SimulateSample(n=1,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+               type="triangular")
+
+length(testSample2$value)
+
+is((testSample2$value[[1]]),"FuzzyNumber")
+
+class(unlist(testSample2$value))
+
+
+EpistemicEstimator(testSample2$value[[1]],estimator = "mean", cutsNumber = 10)
+
+testSample1
+
+CombinePValues(c(0.5,0.37,0.45,0.1,Inf),method = "mean")
+
+CombinePValues(matrix(0.5,nrow = 3,ncol=3),method = "mean")
+
+CombinePValues(c(0.5,0.37,0.45,0.1),method = 5)
+
+
+use_test("AverageStatisticEpistemicTest")
+
+set.seed(123456)
+
+testSample3 <-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                             increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                             supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                             supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                             type="trapezoidal")
+
+testSample4 <-SimulateSample(10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0.2,sd=1),
+                             increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                             supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                             supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                             type="trapezoidal")
+
+set.seed(123456)
+
+AverageStatisticEpistemicTest(testSample5$value,testSample6$value,cutsNumber = 30)
+
+set.seed(123456)
+
+testSample3 <-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                             increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                             supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                             supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                             type="trapezoidal")
+
+testSample4 <-SimulateSample(10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0.2,sd=1),
+                             increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                             supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                             supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                             type="trapezoidal")
+
+testSample5 <-SimulateSample(10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                                  increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                                  supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                                  supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                                  knotNumbers = 10,
+                                  type="PLFN")
+
+testSample6 <-SimulateSample(15,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=2),
+                                  increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+                                  supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                                  supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                                  knotNumbers = 10,
+                                  type="PLFN")
+
+
+testthat::snapshot_accept('AverageStatisticEpistemicTest')
+
+AverageStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10, bootstrapMethod = c("std","anti"))
+
+AverageStatisticEpistemicTest(testSample3$value,NA,cutsNumber = 10)
+
+AverageStatisticEpistemicTest(testSample3$value,list(1,23,list(123)),cutsNumber = 10)
+
+
+use_test("EpistemicTest")
+
+MultiStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10, bootstrapMethod = "std",combineMethod = c("mean","simes"))
+
+ResamplingStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10,K=c(2,3))
+
+EpistemicTest(testSample3$value,testSample3$value,cutsNumber = 5,algorithm = c(2,3))

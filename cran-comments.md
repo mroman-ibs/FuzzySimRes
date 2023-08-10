@@ -1,3 +1,10 @@
+I have prepared the new version (0.3.0, previous version: 0.2.1) of my package. 
+
+The main differences are listed below:
+- Improved output for AntitheticBootstrap and EpistemicBootstrap
+- Added tests based on testthat package
+
+
 I have prepared the new version (0.2.1, previous version: 0.2.0) of my package. 
 
 The main differences are listed below:

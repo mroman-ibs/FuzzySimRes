@@ -138,7 +138,7 @@ ResamplingStatisticEpistemicTest <- function(sample1,sample2,bootstrapMethod="st
   if(!isFuzzyData(sample1))
   {
 
-    stop("Parameter sample1 should consist of fuzzy numbers (single value or list)")
+    stop("Parameter sample1 should consist of fuzzy numbers - single value or list")
 
   }
 
@@ -146,14 +146,24 @@ ResamplingStatisticEpistemicTest <- function(sample1,sample2,bootstrapMethod="st
   if(!(isFuzzyData(sample2) || is.null(sample2)))
   {
 
-    stop("Parameter sample1 should consist of fuzzy numbers (single value or list)")
+    stop("Parameter sample2 should consist of fuzzy numbers - single value or list")
 
+  }
+
+  if(length(bootstrapMethod) > 1)
+  {
+    stop("Parameter bootstrapMethod should be a single value")
   }
 
 
   if(!(bootstrapMethod %in% c("std","anti")))
   {
-    stop("Parameter bootstrapMethod should be a proper name of epistemic bootstrap method (std or anti)")
+    stop("Parameter bootstrapMethod should be a proper name of epistemic bootstrap method - std or anti")
+  }
+
+  if(length(combineMethod) > 1)
+  {
+    stop("Parameter combineMethod should be a single value")
   }
 
   if(!(combineMethod %in% c("simes","mean","fisher", "tippet", "sidak")))
