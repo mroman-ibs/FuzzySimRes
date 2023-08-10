@@ -1,3 +1,9 @@
+# FuzzySimRes 0.3.0
+
+* Improved output for AntitheticBootstrap and EpistemicBootstrap
+* Added tests based on testthat package
+
+
 # FuzzySimRes 0.2.1
 
 * Functions for the estimators now calculate both the SE and MSE.
