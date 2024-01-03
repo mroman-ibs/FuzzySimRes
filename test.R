@@ -749,3 +749,8 @@ MultiStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10,
 ResamplingStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10,K=c(2,3))
 
 EpistemicTest(testSample3$value,testSample3$value,cutsNumber = 5,algorithm = c(2,3))
+
+citation("FuzzySimRes")
+
+library(gitcreds)
+gitcreds_set()
