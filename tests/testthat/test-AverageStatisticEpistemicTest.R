@@ -4,29 +4,29 @@ test_that("Function returns correct values", {
 
   set.seed(123456)
 
-  testSample3 <-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+  testSample3 <-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                               incrCorePD="rexp", parIncrCorePD=list(rate=2),
+                               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+                               suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
                                type="trapezoidal")
 
-  testSample4 <-SimulateSample(10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0.2,sd=1),
-                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+  testSample4 <-SimulateSample(10,originalPD="rnorm",parOriginalPD=list(mean=0.2,sd=1),
+                               incrCorePD="rexp", parIncrCorePD=list(rate=2),
+                               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+                               suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
                                type="trapezoidal")
 
-  testSample5 <-SimulateSample(10,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+  testSample5 <-SimulateSample(10,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                               incrCorePD="rexp", parIncrCorePD=list(rate=2),
+                               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+                               suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
                                knotNumbers = 10,
                                type="PLFN")
 
-  testSample6 <-SimulateSample(15,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=2),
-                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+  testSample6 <-SimulateSample(15,originalPD="rnorm",parOriginalPD=list(mean=0,sd=2),
+                               incrCorePD="rexp", parIncrCorePD=list(rate=2),
+                               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+                               suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
                                knotNumbers = 10,
                                type="PLFN")
 
@@ -99,10 +99,10 @@ test_that("Function reports errors", {
 
   set.seed(123456)
 
-  testSample3 <-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-                               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-                               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+  testSample3 <-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                               incrCorePD="rexp", parIncrCorePD=list(rate=2),
+                               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+                               suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
                                type="trapezoidal")
 
   # tests

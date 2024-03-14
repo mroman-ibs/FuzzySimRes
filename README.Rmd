@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 The goal of FuzzySimRes, a library written in R, is to simulate synthetic fuzzy data and
 provide so-called epistemic bootstrap procedures.
 
-The simulation procedures are useful to generate synthetic samples that can be applied in statistical inference (see, e.g., [@grzegorzewskietal2020;@grzegorzewskiamcs2020]) and consist of fuzzy numbers (e.g., triangular or trapezoidal ones).
+The simulation procedures are useful to generate synthetic samples that can be applied in statistical inference (see, e.g., [@grzegorzewskietal2020;@grzegorzewskiamcs2020;@FRV]) and consist of fuzzy numbers (e.g., triangular or trapezoidal ones).
 
 The epistemic bootstrap is used for epistemic fuzzy data (see [@Couso2014]) and it allows (see [@grzegorzewski2021;@Grzegorzewski_Romaniuk_2022]):
 
@@ -92,10 +92,10 @@ library(FuzzySimRes)
 
 # generate the initial sample consisting of 5 trapezoidal fuzzy numbers
 
-sample1 <- SimulateSample(5,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+sample1 <- SimulateSample(5,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 # apply the epistemic bootstrap with 10 cuts
@@ -117,17 +117,17 @@ EpistemicEstimator(sample1$value,estimator="median",cutsNumber = 30,bootstrapMet
 
 # generate two independent initial fuzzy samples
 
-list1<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+list1<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 
-list2<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+list2<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 # apply the Kolmogorov-Smirnov two-sample test for two different samples

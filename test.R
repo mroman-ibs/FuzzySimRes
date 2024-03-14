@@ -30,6 +30,16 @@ SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,
                     supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
                     type="triangular")
 
+SimulateFuzzyNumber(original="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                    supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                    supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                    type="triangular")
+
+SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+                    supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+                    supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+                    type="triangular",a=5)
+
 
 is.numeric(c(1,2,NA))
 
@@ -115,6 +125,13 @@ SimulateSample(n=3,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,s
                supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
                supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
                type="PLFN",knotNumbers = -2)
+
+
+SimulateSample(3,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
+               increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
+               supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
+               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+               type="trapezoidal",a=3)
 
 
 lista1<-SimulateSample(3,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
@@ -561,6 +578,8 @@ usethis::use_release_issue()
 
 rhub::check_for_cran()
 
+rhub::check_for_cran(email = "mroman@wit.edu.pl")
+
 rhub::validate_email(email = NULL, token = NULL)
 
 devtools::submit_cran()
@@ -617,8 +636,21 @@ testSample1 <- SimulateSample(n=10,originalRandomDist="rnorm",parametersOriginal
                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
                               type="trapezoidal")
 
+wynik111 <- EpistemicBootstrap(testSample1$value,cutsNumber = 2)
+
+wynik111
+
+is.matrix(wynik111)
+
+testSample1$value
+
+is.matrix(testSample1$value)
+
 EpistemicBootstrap(testSample1$value,cutsNumber = list(2,4))
 
+print
+
+methods(print)
 
 EpistemicBootstrap(12,cutsNumber = 10)
 
@@ -644,6 +676,16 @@ testSample1 <- SimulateSample(n=10,originalRandomDist="rnorm",parametersOriginal
                               supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
                               type="trapezoidal")
 testSample1
+
+EpistemicEstimator(testSample1$value,estimator = "mean", cutsNumber = 5)
+
+wynik111
+
+EpistemicEstimator(wynik111,estimator = "mean", cutsNumber = 5)
+
+EpistemicEstimator(wynik111,estimator = "mean", cutsNumber = 5,trueValue = 3)
+
+?EpistemicEstimator
 
 
 EpistemicEstimator(testSample1$value,estimator = "mean", cutsNumber = 0.5)
@@ -704,6 +746,10 @@ set.seed(123456)
 
 AverageStatisticEpistemicTest(testSample5$value,testSample6$value,cutsNumber = 30)
 
+AverageStatisticEpistemicTest(testSample5$value,testSample6$value,cutsNumber = 30,v=1)
+
+warnings()
+
 set.seed(123456)
 
 testSample3 <-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
@@ -746,6 +792,10 @@ use_test("EpistemicTest")
 
 MultiStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10, bootstrapMethod = "std",combineMethod = c("mean","simes"))
 
+
+MultiStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10, bootstrapMethod = "std",combineMethod = "simes")
+
+
 ResamplingStatisticEpistemicTest(testSample3$value,testSample3$value,cutsNumber = 10,K=c(2,3))
 
 EpistemicTest(testSample3$value,testSample3$value,cutsNumber = 5,algorithm = c(2,3))
@@ -754,3 +804,244 @@ citation("FuzzySimRes")
 
 library(gitcreds)
 gitcreds_set()
+
+is.matrix(EpistemicBootstrap(lista1$value,cutsNumber = 1))
+
+
+list1Epistemic<-EpistemicBootstrap(lista1$value,cutsNumber = 10)
+
+list1Epistemic
+
+EpistemicEstimator(list1Epistemic,estimator="sd")
+
+?EpistemicEstimator
+
+EpistemicMean(lista1$value,cutsNumber = 10)
+
+EpistemicMean(list1Epistemic)
+
+
+EpistemicCorrectedVariance (lista1$value, cutsNumber=5, bootstrapMethod="std")
+
+EpistemicCorrectedVariance(wynik111)
+
+?EpistemicCorrectedVariance
+
+wynik111
+
+ncol(wynik111)
+
+nrow(wynik111)
+
+# zmiana parametrów
+
+
+SimulateFuzzyNumber(originalPD = "rnorm",parOriginalPD = list(mean=0,sd=1),
+                    suppLeftPD = "runif",parSuppLeftPD = list(min=0,max=0.6),
+                    suppRightPD = "runif", parSuppRightPD = list(min=0,max=0.6),
+                    type="triangular")
+
+SimulateSample(n=20,originalPD = "rnorm",parOriginalPD = list(mean=0,sd=1),
+               suppLeftPD = "runif",parSuppLeftPD = list(min=0,max=0.6),
+               suppRightPD = "runif", parSuppRightPD = list(min=0,max=0.6),
+               type="triangular")
+
+
+liczba1 <- SimulateFuzzyNumber(originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                               incrCorePD = "rexp", parIncrCorePD = list(rate=2),
+                               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+                               suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
+                               knotNumbers = 2,
+                               type="PLFN")
+
+liczba1
+
+
+
+
+
+SimulateSample(n=5,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                               incrCorePD = "rexp", parIncrCorePD = list(rate=2),
+                               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+                               suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
+                               knotNumbers = 2,
+                               type="PLFN")
+
+
+testthat::snapshot_review('SimulateFuzzyNumber')
+
+testthat::snapshot_review('SimulateSample')
+
+testthat::snapshot_accept('AntitheticBootstrap')
+
+
+
+testSample4 <-SimulateSample(10,originalPD="rnorm",parOriginalPD=list(mean=0.2,sd=1),
+                             incrCorePD="rexp", parIncrCorePD=list(rate=2),
+                             suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+                             suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
+                             type="trapezoidal")
+
+testSample4
+
+
+# testy z artykułu
+
+# seed PRNG
+
+set.seed(123456)
+
+SimulateFuzzyNumber(originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                    incrCorePD="runif",parIncrCorePD=list(min=0,max=0.6),
+                    suppLeftPD="runif",parSuppLeftPD=list(min=0,max=1),
+                    suppRightPD="runif", parSuppRightPD=list(min=0,max=1),
+                    type="trapezoidal")
+
+# seed PRNG
+
+set.seed(123456)
+
+sample1 <- SimulateSample(n=10,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                          incrCorePD="runif",parIncrCorePD=list(min=0,max=0.6),
+                          suppLeftPD="runif",parSuppLeftPD=list(min=0,max=1),
+                          suppRightPD="runif", parSuppRightPD=list(min=0,max=1),
+                          type="trapezoidal")
+
+
+sample1$original[2]
+
+sample1$value[2]
+
+# seed PRNG
+
+set.seed(123456)
+
+SimulateFuzzyNumber(originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                    incrCorePD="runif",parIncrCorePD=list(min=0,max=0.6),
+                    suppLeftPD="runif",parSuppLeftPD=list(min=0,max=1),
+                    suppRightPD="runif", parSuppRightPD=list(min=0,max=1),
+                    type="trapezoidal")
+
+# seed PRNG
+
+set.seed(123456)
+
+sample1 <- SimulateSample(n=10,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+                          incrCorePD="runif",parIncrCorePD=list(min=0,max=0.6),
+                          suppLeftPD="runif",parSuppLeftPD=list(min=0,max=1),
+                          suppRightPD="runif", parSuppRightPD=list(min=0,max=1),
+                          type="trapezoidal")
+
+
+sample1$original[2]
+
+sample1$value[2]
+
+library(FuzzyNumbers)
+
+plot(sample1$value[[2]])
+
+plot(sample1$value[[2]])
+
+
+# Epistemic bootstrap
+
+# seed PRNG
+
+set.seed(123456)
+
+epistemicOutput <- EpistemicBootstrap(sample1$value, cutsNumber = 3)
+
+round(epistemicOutput,digits = 4)
+
+# Antithetic epistemic bootstrap
+
+# seed PRNG
+
+set.seed(123456)
+
+epistemicOutputAnt <- AntitheticBootstrap(sample1$value, cutsNumber = 3)
+
+round(epistemicOutputAnt,digits = 4)
+
+# Estimation of the statistical parameters
+
+set.seed(56789)
+
+EpistemicEstimator(sample1$value, estimator = "median",cutsNumber = 100)
+
+set.seed(56789)
+
+EpistemicCorrectedVariance(sample1$value, cutsNumber = 100)
+
+
+# statistical tests
+
+set.seed(56789)
+
+sample2 <- SimulateSample(n=10,originalPD="rnorm",parOriginalPD=list(mean=0.5,sd=1),
+                          incrCorePD="runif",parIncrCorePD=list(min=0,max=0.6),
+                          suppLeftPD="runif",parSuppLeftPD=list(min=0,max=1),
+                          suppRightPD="runif", parSuppRightPD=list(min=0,max=1),
+                          type="trapezoidal")
+
+EpistemicTest(sample1$value,sample2$value,algorithm = "ms",bootstrapMethod="anti",cutsNumber=100)
+
+# the one-sample KS test for normality
+
+set.seed(56789)
+
+EpistemicTest(sample1$value,sample2=NULL,algorithm="avs",bootstrapMethod="std",cutsNumber=100,y="pnorm")
+
+
+# Real-life dataset
+
+controlChartData$X.1.2
+
+# Goodness-of-fit test for control chart data
+
+set.seed(5678)
+
+randomSetsCCD <- sample(length(controlChartData),length(controlChartData)/2)
+
+randomSetsCCD
+
+EpistemicTest(controlChartData[randomSetsCCD],controlChartData[-randomSetsCCD],algorithm = "avs",cutsNumber=1000)
+
+EpistemicTest(controlChartData[randomSetsCCD],controlChartData[-randomSetsCCD],algorithm = "ms",combineMethod="mean",
+              cutsNumber=1000)
+
+EpistemicTest(controlChartData[randomSetsCCD],controlChartData[-randomSetsCCD],algorithm = "res",combineMethod="mean",
+              cutsNumber=1000,K=200)
+
+
+
+# testy wydajności
+
+?SimulateSample
+
+SimulateSample(n=10,originalPD="rnorm",parOriginalPD=list(mean=0.5,sd=1),
+               incrCorePD="runif",parIncrCorePD=list(min=0,max=0.6),
+               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=1),
+               suppRightPD="runif", parSuppRightPD=list(min=0,max=1),
+               type="trapezoidal")
+
+
+wynik1 <- SimulateSample(n=100,originalPD="rnorm",parOriginalPD=list(mean=0.5,sd=1),
+               incrCorePD="runif",parIncrCorePD=list(min=0,max=0.6),
+               suppLeftPD="runif",parSuppLeftPD=list(min=0,max=1),
+               suppRightPD="runif", parSuppRightPD=list(min=0,max=1),
+               type="trapezoidal")
+
+
+system.time(SimulateSample(n=10000,originalPD="rnorm",parOriginalPD=list(mean=0.5,sd=1),
+                           incrCorePD="runif",parIncrCorePD=list(min=0,max=0.6),
+                           suppLeftPD="runif",parSuppLeftPD=list(min=0,max=1),
+                           suppRightPD="runif", parSuppRightPD=list(min=0,max=1),
+                           type="trapezoidal"))
+
+?EpistemicBootstrap
+
+EpistemicBootstrap(wynik1$value,cutsNumber = 10)
+
+devtools::check(remote = TRUE, manual = TRUE)

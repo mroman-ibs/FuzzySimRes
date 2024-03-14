@@ -65,17 +65,17 @@ set.seed(1234)
 
 # generate two independent initial fuzzy samples
 
-list1<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+list1<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 
-list2<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+list2<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 # apply the Kolmogorov-Smirnov two sample test for two different samples

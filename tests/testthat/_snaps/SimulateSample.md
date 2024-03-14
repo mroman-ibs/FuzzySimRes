@@ -2,10 +2,9 @@
 
     Code
       set.seed(1234567)
-      SimulateSample(n = 1, originalRandomDist = "rnorm", parametersOriginalRD = list(
-        mean = 0, sd = 1), supportLeftRandomDist = "runif", parametersSupportLeftRD = list(
-        min = 0, max = 0.6), supportRightRandomDist = "runif",
-      parametersSupportRightRD = list(min = 0, max = 0.6), type = "triangular")
+      SimulateSample(n = 1, originalPD = "rnorm", parOriginalPD = list(mean = 0, sd = 1),
+      suppLeftPD = "runif", parSuppLeftPD = list(min = 0, max = 0.6), suppRightPD = "runif",
+      parSuppRightPD = list(min = 0, max = 0.6), type = "triangular")
     Output
       $original
       [1] 0.6022571
@@ -22,11 +21,10 @@
 
     Code
       set.seed(1234567)
-      SimulateSample(n = 10, originalRandomDist = "rnorm", parametersOriginalRD = list(
-        mean = 0, sd = 1), increasesCoreRandomDist = "rexp",
-      parametersCoreIncreasesRD = list(rate = 2), supportLeftRandomDist = "runif",
-      parametersSupportLeftRD = list(min = 0, max = 0.6), supportRightRandomDist = "runif",
-      parametersSupportRightRD = list(min = 0, max = 0.6), type = "trapezoidal")
+      SimulateSample(n = 10, originalPD = "rnorm", parOriginalPD = list(mean = 0, sd = 1),
+      incrCorePD = "rexp", parIncrCorePD = list(rate = 2), suppLeftPD = "runif",
+      parSuppLeftPD = list(min = 0, max = 0.6), suppRightPD = "runif",
+      parSuppRightPD = list(min = 0, max = 0.6), type = "trapezoidal")
     Output
       $original
        [1]  0.6022571  1.0515808  1.1707096 -0.2010067  1.9470200 -0.4471801
@@ -89,11 +87,10 @@
 
     Code
       set.seed(1234567)
-      SimulateSample(n = 3, originalRandomDist = "rnorm", parametersOriginalRD = list(
-        mean = 0, sd = 1), increasesCoreRandomDist = "rexp",
-      parametersCoreIncreasesRD = list(rate = 2), supportLeftRandomDist = "runif",
-      parametersSupportLeftRD = list(min = 0, max = 0.6), supportRightRandomDist = "runif",
-      parametersSupportRightRD = list(min = 0, max = 0.6), knotNumbers = 10, type = "PLFN")
+      SimulateSample(n = 3, originalPD = "rnorm", parOriginalPD = list(mean = 0, sd = 1),
+      incrCorePD = "rexp", parIncrCorePD = list(rate = 2), suppLeftPD = "runif",
+      parSuppLeftPD = list(min = 0, max = 0.6), suppRightPD = "runif",
+      parSuppRightPD = list(min = 0, max = 0.6), knotNumbers = 10, type = "PLFN")
     Output
       $original
       [1] 0.6022571 0.0443457 0.7074159
@@ -120,11 +117,10 @@
 
     Code
       set.seed(1234567)
-      SimulateSample(n = 5, originalRandomDist = "rnorm", parametersOriginalRD = list(
-        mean = 0, sd = 1), increasesCoreRandomDist = "rexp",
-      parametersCoreIncreasesRD = list(rate = 2), supportLeftRandomDist = "runif",
-      parametersSupportLeftRD = list(min = 0, max = 0.6), supportRightRandomDist = "runif",
-      parametersSupportRightRD = list(min = 0, max = 0.6), knotNumbers = 0, type = "PLFN")
+      SimulateSample(n = 5, originalPD = "rnorm", parOriginalPD = list(mean = 0, sd = 1),
+      incrCorePD = "rexp", parIncrCorePD = list(rate = 2), suppLeftPD = "runif",
+      parSuppLeftPD = list(min = 0, max = 0.6), suppRightPD = "runif",
+      parSuppRightPD = list(min = 0, max = 0.6), knotNumbers = 0, type = "PLFN")
     Output
       $original
       [1]  0.6022571  1.0515808  1.1707096 -0.2010067  1.9470200

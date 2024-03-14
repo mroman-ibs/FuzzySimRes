@@ -1,3 +1,11 @@
+# FuzzySimRes 0.4.0
+
+* Added parameter ... to functions
+* Now EpistemicEstimator can be used with the output provided by EpistemicBootstrap or AntitheticBootstrap
+* Paremeter names for SimulateFuzzyNumber and SimulateSample are shortened
+* Added new citation
+
+
 # FuzzySimRes 0.3.0
 
 * Improved output for AntitheticBootstrap and EpistemicBootstrap

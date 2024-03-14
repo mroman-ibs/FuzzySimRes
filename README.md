@@ -9,8 +9,9 @@ procedures.
 
 The simulation procedures are useful to generate synthetic samples that
 can be applied in statistical inference (see, e.g., (P. Grzegorzewski,
-Hryniewicz, and Romaniuk 2020a, 2020b)) and consist of fuzzy numbers
-(e.g., triangular or trapezoidal ones).
+Hryniewicz, and Romaniuk 2020a, 2020b; Parchami, Grzegorzewski, and
+Romaniuk 2024)) and consist of fuzzy numbers (e.g., triangular or
+trapezoidal ones).
 
 The epistemic bootstrap is used for epistemic fuzzy data (see (Couso and
 Dubois 2014)) and it allows (see (P. Grzegorzewski and Romaniuk 2021;
@@ -99,41 +100,41 @@ library(FuzzySimRes)
 
 # generate the initial sample consisting of 5 trapezoidal fuzzy numbers
 
-sample1 <- SimulateSample(5,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+sample1 <- SimulateSample(5,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 # apply the epistemic bootstrap with 10 cuts
 
 EpistemicBootstrap (sample1$value, cutsNumber=10)
-#>                X1       X2         X3         X4          X5
-#> alpha1  1.1497756 1.892964 -0.4412416 -0.4123010 -0.21887696
-#> alpha2  1.0789047 2.256274  0.8043010 -0.2897991  0.21447852
-#> alpha3  1.0821638 1.558882 -0.5234141 -0.4201384  0.01919864
-#> alpha4  0.9770422 1.871995  0.2864493 -0.4820862  0.22506592
-#> alpha5  1.4685182 1.471085  1.1883406 -0.7735033 -0.53509789
-#> alpha6  1.6920152 2.316149  0.3981874 -0.3132989  0.29258249
-#> alpha7  1.6567735 1.597893  0.1417311 -0.4820543  0.24728641
-#> alpha8  1.2565657 2.537325 -0.1589284 -0.6728166 -0.22298375
-#> alpha9  1.1521309 2.275875 -0.2135284 -0.7091520  0.07312683
-#> alpha10 1.5825929 2.525235 -0.8153841 -0.7529021  0.17019910
+#>               X1       X2         X3         X4          X5
+#> 0.3616 1.1497756 1.892964 -0.4412416 -0.4123010 -0.21887696
+#> 0.8688 1.0789047 2.256274  0.8043010 -0.2897991  0.21447852
+#> 0.9042 1.0821638 1.558882 -0.5234141 -0.4201384  0.01919864
+#> 0.6174 0.9770422 1.871995  0.2864493 -0.4820862  0.22506592
+#> 0.134  1.4685182 1.471085  1.1883406 -0.7735033 -0.53509789
+#> 0.7822 1.6920152 2.316149  0.3981874 -0.3132989  0.29258249
+#> 0.4292 1.6567735 1.597893  0.1417311 -0.4820543  0.24728641
+#> 0.9273 1.2565657 2.537325 -0.1589284 -0.6728166 -0.22298375
+#> 0.7732 1.1521309 2.275875 -0.2135284 -0.7091520  0.07312683
+#> 0.2597 1.5825929 2.525235 -0.8153841 -0.7529021  0.17019910
 
 # apply the antithetic bootstrap with 10 cuts
 
 AntitheticBootstrap (sample1$value, cutsNumber=10)
-#>               X1       X2          X3         X4          X5
-#> alpha1  1.715099 2.348629  0.84791420 -0.4155065 -0.10278774
-#> alpha2  1.657023 2.315396  0.75226172 -0.2950119 -0.18807131
-#> alpha3  1.525241 1.529150  0.04191831 -0.4140887  0.28010819
-#> alpha4  1.036562 1.548077  0.88263662 -0.2954918 -0.28473900
-#> alpha5  1.123620 2.289173  0.08373510 -0.4331157 -0.19568336
-#> alpha6  1.423709 1.622644  0.68312991 -0.4069346  0.13470515
-#> alpha7  1.300673 2.154367  0.27146818 -0.6049461  0.30957665
-#> alpha8  1.153848 1.880561  0.76471178 -0.5728187 -0.29215072
-#> alpha9  1.384238 2.107480  0.30352891 -0.6221601 -0.08907579
-#> alpha10 1.574392 1.977895 -0.28340154 -0.3810230  0.25160955
+#>              X1       X2          X3         X4          X5
+#> 0.5138 1.715099 2.348629  0.84791420 -0.4155065 -0.10278774
+#> 0.7201 1.657023 2.315396  0.75226172 -0.2950119 -0.18807131
+#> 0.7499 1.525241 1.529150  0.04191831 -0.4140887  0.28010819
+#> 0.0956 1.036562 1.548077  0.88263662 -0.2954918 -0.28473900
+#> 0.3978 1.123620 2.289173  0.08373510 -0.4331157 -0.19568336
+#> 0.2945 1.423709 1.622644  0.68312991 -0.4069346  0.13470515
+#> 0.6173 1.300673 2.154367  0.27146818 -0.6049461  0.30957665
+#> 0.9743 1.153848 1.880561  0.76471178 -0.5728187 -0.29215072
+#> 0.6182 1.384238 2.107480  0.30352891 -0.6221601 -0.08907579
+#> 0.5214 1.574392 1.977895 -0.28340154 -0.3810230  0.25160955
 
 # calculate the mean using the standard epistemic bootstrap approach
 
@@ -143,6 +144,9 @@ EpistemicMean(sample1$value,cutsNumber = 30)
 #> 
 #> $SE
 #> [1] 0.1570901
+#> 
+#> $MSE
+#> [1] NA
 
 # calculate the median using the antithetic epistemic bootstrap approach
 
@@ -152,21 +156,24 @@ EpistemicEstimator(sample1$value,estimator="median",cutsNumber = 30,bootstrapMet
 #> 
 #> $SE
 #> [1] 0.2187421
+#> 
+#> $MSE
+#> [1] NA
 
 
 # generate two independent initial fuzzy samples
 
-list1<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+list1<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 
-list2<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+list2<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 # apply the Kolmogorov-Smirnov two-sample test for two different samples
@@ -246,6 +253,14 @@ Data.” In *Joint Proceedings of IFSA-EUSFLAT-AGOP 2021 Conferences*,
 Grzegorzewski, Przemyslaw, and Maciej Romaniuk. 2022. “Bootstrap Methods
 for Epistemic Fuzzy Data.” *International Journal of Applied Mathematics
 and Computer Science* 32 (2): 285–97.
+
+</div>
+
+<div id="ref-FRV" class="csl-entry">
+
+Parchami, Abbas, Przemyslaw Grzegorzewski, and Maciej Romaniuk. 2024.
+“Statistical Simulations with LR Random Fuzzy Numbers.” *Statistical
+Papers*. <https://doi.org/10.1007/s00362-024-01533-5>.
 
 </div>
 

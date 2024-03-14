@@ -6,27 +6,27 @@
 #'
 #' @details
 #' The procedure randomly generates a fuzzy number (a triangular, trapezoidal, or PLFN one) with the
-#' original, increases of its core, and increases of its support given by some random distributions.
+#' originalPD, increases of its core, and increases of its support given by some random distributions.
 #' The names of the respective functions of these probability distributions should be in the form
 #'  required by the \code{stats} package.
 #' For triangular fuzzy number, \code{increasesRandomDist} is not used.
 #' For both triangular and trapezoidal fuzzy numbers, \code{knotNumbers} is not used.
 #'
 #'
-#' The "true origin" of the fuzzy number is independently drawn from the random distribution using
-#' \code{originalRandomDist} function from the \code{stats} package with the list of parameters defined by
-#' \code{parametersOriginalRD}.
-#' The same applies to the increases of the core (the function \code{increasesCoreRandomDist} with the parameters
-#' \code{parametersCoreIncreasesRD} is then used), the left increase of the support (the function \code{supportLeftRandomDist}
-#'  with the parameters \code{parametersSupportLeftRD}, respectively), and the right increase of the support
-#'  (the function \code{supportRightRandomDist}
-#'  with the parameters \code{parametersSupportRightRD}, respectively).
+#' The "true origin" of the fuzzy number is independently drawn from the probability distribution using
+#' \code{originalPD} function from the \code{stats} package with the list of parameters defined by
+#' \code{parOriginalPD}.
+#' The same applies to the increases of the core (the function \code{incrCorePD} with the parameters
+#' \code{parIncrCorePD} is then used), the left increase of the support (the function \code{suppLeftPD}
+#'  with the parameters \code{parSuppLeftPD}, respectively), and the right increase of the support
+#'  (the function \code{suppRightPD}
+#'  with the parameters \code{parSuppRightPD}, respectively).
 #'
 #'
 #' @return
 #' The output is given as a list of two values:
 #' \code{original} with "true origin" of the simulated fuzzy number generated
-#'  from the random distribution \code{originalRandomDist},
+#'  from the probability distribution \code{originalPD},
 #' and \code{value} -- the simulated triangular, trapezoidal, or PLFN fuzzy number as in the \code{FuzzyNumbers} package.
 #'
 #'
@@ -34,34 +34,36 @@
 #'
 #'
 #'
-#' @param originalRandomDist Name of the random generator used to create the "true origin" of fuzzy number (as
+#' @param originalPD Name of the random generator used to create the "true origin" of fuzzy number (as
 #' defined in the \code{stats} package).
 #'
-#' @param parametersOriginalRD List of parameters required by the random generator used
+#' @param parOriginalPD List of parameters required by the random generator used
 #' to create the "true origin" of a fuzzy number.
 #'
-#' @param increasesCoreRandomDist Name of the random generator used to create the increases of the core of fuzzy
+#' @param incrCorePD Name of the random generator used to create the increases of the core of fuzzy
 #'  number (as defined in the \code{stats} package).
 #'
-#' @param parametersCoreIncreasesRD List of parameters required by the random generator used
+#' @param parIncrCorePD List of parameters required by the random generator used
 #' to create the increases of the core of trapezoidal number.
 #'
-#' @param supportLeftRandomDist Name of the random generator used to create the increase of the left support of fuzzy
+#' @param suppLeftPD Name of the random generator used to create the increase of the left support of fuzzy
 #'   number (as defined in the \code{stats} package).
 #'
-#' @param parametersSupportLeftRD List of parameters required by the random generator used
+#' @param parSuppLeftPD List of parameters required by the random generator used
 #' to create the increase of the left support of fuzzy  number.
 #'
-#' @param supportRightRandomDist Name of the random generator used to create the increase of the right support of fuzzy
+#' @param suppRightPD Name of the random generator used to create the increase of the right support of fuzzy
 #'  number (as defined in the \code{stats} package).
 #'
-#' @param parametersSupportRightRD List of parameters required by the random generator used
+#' @param parSuppRightPD List of parameters required by the random generator used
 #' to create the increase of the right support of trapezoidal number.
 #'
 #'
 #' @param knotNumbers Number of the knots necessary to generate the output fuzzy number.
 #'
 #' @param type Type of the generated fuzzy number ("triangular", "trapezoidal", or "PLFN").
+#'
+#' @param ... Possible parameters passed to other functions.
 #'
 #' @seealso \code{\link{SimulateSample}} for generation of the whole random fuzzy sample
 #'
@@ -74,27 +76,27 @@
 #' # generate triangular fuzzy number (the normal distribution for the "true origin",
 #' # and two different uniform distribution for the increases of the support)
 #'
-#' SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' SimulateFuzzyNumber(originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+#' suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+#' suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 #' type="triangular")
 #'
 #' # generate trapezoidal fuzzy number (the normal distribution for the "true origin",
 #' # the exponential distribution for the increases of the core,
 #' # and two different uniform distribution for the increases of the support)
 #'
-#' SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-#' increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' SimulateFuzzyNumber(originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+#' incrCorePD="rexp", parIncrCorePD=list(rate=2),
+#' suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+#' suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 #' type="trapezoidal")
 #'
 #' # generate PLFN fuzzy number with two knots
 #'
-#' SimulateFuzzyNumber(originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-#' increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' SimulateFuzzyNumber(originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+#' incrCorePD="rexp", parIncrCorePD=list(rate=2),
+#' suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+#' suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 #' knotNumbers = 2,
 #' type="PLFN")
 #'
@@ -114,6 +116,10 @@
 #' Gagolewski, M., Caha, J. (2021) FuzzyNumbers Package: Tools to deal with fuzzy numbers in R.
 #' R package version 0.4-7, https://cran.r-project.org/web/packages=FuzzyNumbers
 #'
+#' Parchami, A., Grzegorzewski, P., Romaniuk, M. (2024)
+#' Statistical simulations with LR random fuzzy numbers.
+#' Statistical Papers
+#'
 #'
 #'
 #'
@@ -122,12 +128,12 @@
 
 
 
-SimulateFuzzyNumber <- function(originalRandomDist, parametersOriginalRD,
-                                increasesCoreRandomDist, parametersCoreIncreasesRD,
-                                supportLeftRandomDist, parametersSupportLeftRD,
-                                supportRightRandomDist, parametersSupportRightRD,
+SimulateFuzzyNumber <- function(originalPD, parOriginalPD,
+                                incrCorePD, parIncrCorePD,
+                                suppLeftPD, parSuppLeftPD,
+                                suppRightPD, parSuppRightPD,
                                 knotNumbers=0,
-                                type="trapezoidal")
+                                type="trapezoidal",...)
 {
 
   # check parameters
@@ -154,11 +160,11 @@ SimulateFuzzyNumber <- function(originalRandomDist, parametersOriginalRD,
   {
     # simulate three values
 
-    leftSupport <- do.call(supportLeftRandomDist, append(1,parametersSupportLeftRD))
+    leftSupport <- do.call(suppLeftPD, append(1,parSuppLeftPD))
 
-    origin <- do.call(originalRandomDist, append(1,parametersOriginalRD))
+    origin <- do.call(originalPD, append(1,parOriginalPD))
 
-    rightSupport <- do.call(supportRightRandomDist, append(1,parametersSupportLeftRD))
+    rightSupport <- do.call(suppRightPD, append(1,parSuppLeftPD))
 
     # use proper function to simulate the output
 
@@ -174,17 +180,17 @@ SimulateFuzzyNumber <- function(originalRandomDist, parametersOriginalRD,
   {
     # simulate four values
 
-    leftSupport <- do.call(supportLeftRandomDist, append(1,parametersSupportLeftRD))
+    leftSupport <- do.call(suppLeftPD, append(1,parSuppLeftPD))
 
-    origin <- do.call(originalRandomDist, append(1,parametersOriginalRD))
+    origin <- do.call(originalPD, append(1,parOriginalPD))
 
     leftCore <- origin -
-      do.call(increasesCoreRandomDist, append(1,parametersCoreIncreasesRD))
+      do.call(incrCorePD, append(1,parIncrCorePD))
 
     rightCore <- origin +
-      do.call(increasesCoreRandomDist, append(1,parametersCoreIncreasesRD))
+      do.call(incrCorePD, append(1,parIncrCorePD))
 
-    rightSupport <- do.call(supportRightRandomDist, append(1,parametersSupportLeftRD))
+    rightSupport <- do.call(suppRightPD, append(1,parSuppLeftPD))
 
     # use proper function to simulate the output
 
@@ -199,17 +205,17 @@ SimulateFuzzyNumber <- function(originalRandomDist, parametersOriginalRD,
   {
     # simulate four values
 
-    leftSupport <- do.call(supportLeftRandomDist, append(1,parametersSupportLeftRD))
+    leftSupport <- do.call(suppLeftPD, append(1,parSuppLeftPD))
 
-    origin <- do.call(originalRandomDist, append(1,parametersOriginalRD))
+    origin <- do.call(originalPD, append(1,parOriginalPD))
 
     leftCore <- origin -
-      do.call(increasesCoreRandomDist, append(1,parametersCoreIncreasesRD))
+      do.call(incrCorePD, append(1,parIncrCorePD))
 
     rightCore <- origin +
-      do.call(increasesCoreRandomDist, append(1,parametersCoreIncreasesRD))
+      do.call(incrCorePD, append(1,parIncrCorePD))
 
-    rightSupport <- do.call(supportRightRandomDist, append(1,parametersSupportLeftRD))
+    rightSupport <- do.call(suppRightPD, append(1,parSuppLeftPD))
 
     # cat("leftSupport: ", leftSupport, "\n")
     #
@@ -226,8 +232,8 @@ SimulateFuzzyNumber <- function(originalRandomDist, parametersOriginalRD,
 
     leftKnots <- rep(NA,knotNumbers)
 
-    leftKnots <- TruncDistribution(n=knotNumbers, distributionName=supportLeftRandomDist,
-                                   distributionParameters=parametersSupportLeftRD,
+    leftKnots <- TruncDistribution(n=knotNumbers, distributionName=suppLeftPD,
+                                   distributionParameters=parSuppLeftPD,
                                    leftEndSupport=0,rightEndSupport=leftSupport,decreasing = TRUE)
 
     # cat("leftKnots: ", leftKnots, "\n")
@@ -235,8 +241,8 @@ SimulateFuzzyNumber <- function(originalRandomDist, parametersOriginalRD,
 
     rightKnots <- rep(NA,knotNumbers)
 
-    rightKnots <- TruncDistribution(n=knotNumbers, distributionName=supportRightRandomDist,
-                                    distributionParameters=parametersSupportRightRD,
+    rightKnots <- TruncDistribution(n=knotNumbers, distributionName=suppRightPD,
+                                    distributionParameters=parSuppRightPD,
                                     leftEndSupport=0,rightEndSupport=rightSupport)
 
     # cat("rightKnots: ", rightKnots, "\n")

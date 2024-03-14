@@ -23,6 +23,8 @@
 #' @param method Method used to combine the p-values. The possible methods are the same as in the \code{palasso} package
 #' plus the \code{mean} approach.
 #'
+#' @param ... Possible parameters passed to other functions.
+#'
 
 #'
 #' @examples
@@ -48,7 +50,7 @@
 #'
 #' @export
 
-CombinePValues <- function(pValues,method="simes")
+CombinePValues <- function(pValues,method="simes",...)
 {
   if(!(method %in% c("simes","mean","fisher", "tippet", "sidak")))
   {

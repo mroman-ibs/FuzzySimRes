@@ -1,7 +1,7 @@
 Package: FuzzySimRes
 Type: Package
 Title: Simulation and Resampling Methods for Epistemic Fuzzy Data
-Version: 0.3.0
+Version: 0.4.0
 Authors@R: c(
     person("Maciej", "Romaniuk", email = "mroman@ibspan.waw.pl",
     role = c("cre","aut"),comment = c(ORCID = "0000-0001-9649-396X")),
@@ -25,7 +25,7 @@ NeedsCompilation: yes
 Imports: stats, FuzzyNumbers, palasso, methods
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Depends: 
     R (>= 3.5.0)
 Suggests: 

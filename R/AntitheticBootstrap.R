@@ -24,6 +24,8 @@
 #'
 #' @param cutsNumber Number of cuts used in the antithetic epistemic bootstrap.
 #'
+#' @param ... Possible parameters passed to other functions.
+#'
 #' @family epistemic bootstrap function
 #'
 #' @seealso \code{\link{EpistemicBootstrap}} for the standard epistemic bootstrap algorithm
@@ -37,10 +39,10 @@
 #'
 #' # generate the initial sample consisting of 5 trapezoidal fuzzy numbers
 #'
-#' sample1 <- SimulateSample(5,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-#' increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' sample1 <- SimulateSample(5,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+#' incrCorePD="rexp", parIncrCorePD=list(rate=2),
+#' suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+#' suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 #' type="trapezoidal")
 #'
 #' # apply the antithetic bootstrap with 10 cuts
@@ -72,7 +74,7 @@
 
 
 
-AntitheticBootstrap <- function(fuzzySample, cutsNumber=1)
+AntitheticBootstrap <- function(fuzzySample, cutsNumber=1,...)
 {
   # check parameters
 

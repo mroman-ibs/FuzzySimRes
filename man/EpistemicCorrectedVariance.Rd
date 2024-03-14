@@ -7,15 +7,19 @@
 EpistemicCorrectedVariance(
   fuzzySample,
   cutsNumber = 1,
-  bootstrapMethod = "std"
+  bootstrapMethod = "std",
+  ...
 )
 }
 \arguments{
-\item{fuzzySample}{Sample of fuzzy numbers given in the form of a list or as a single number.}
+\item{fuzzySample}{Sample of fuzzy numbers (given in the form of a list or as a single number) or a matrix with already sampled values (i.e.
+output of function \code{AntitheticBootstrap} or \code{EpistemicBootstrap}).}
 
 \item{cutsNumber}{Number of cuts used in the epistemic bootstrap.}
 
 \item{bootstrapMethod}{The standard (\code{std}) or antithetic (\code{anti}) method used for the epistemic bootstrap.}
+
+\item{...}{Possible parameters passed to other functions.}
 }
 \value{
 The output is given in the form of a real number (the estimator of the variance).
@@ -24,13 +28,17 @@ The output is given in the form of a real number (the estimator of the variance)
 `EpistemicCorrectedVariance` calculates the corrected estimator of the variance for the fuzzy sample using the epistemic bootstrap approach.
 }
 \details{
-For the given initial sample, the function calculates the corrected estimator of the variance
+For the initial sample given by \code{fuzzySample}, the function calculates the corrected estimator of the variance
  using the standard (if \code{bootstrapMethod} is set to
 \code{"std"}) or the antithetic (when \code{bootstrapMethod="anti"}) epistemic bootstrap.
 The initial sample should be given in the form of a list of numbers or a single number.
 These values have to be the fuzzy numbers defined in the \code{FuzzyNumbers} package.
 The corrected estimator of the variance separates the within- and between-group variations.
 For the details, see (Grzegorzewski, Romaniuk, 2022a).
+
+If, instead of fuzzy sample, the matrix is given by the parameter \code{fuzzySample}, then this matrix is treated
+as the direct output from the epistemic or the antithetic bootstrap.
+Then, the corrected estimator of the variance is directly calculated.
 }
 \examples{
 
@@ -40,10 +48,10 @@ set.seed(1234)
 
 # generate an initial fuzzy sample
 
-list1<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+list1<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 
@@ -55,6 +63,14 @@ EpistemicCorrectedVariance(list1$value,cutsNumber = 30)
 # calculate the corrected variance using the antithetic epistemic bootstrap approach
 
 EpistemicCorrectedVariance(list1$value,cutsNumber = 30,bootstrapMethod="anti")
+
+# use the epistemic bootstrap
+
+list1Epistemic<-EpistemicBootstrap(list1$value,cutsNumber = 10)
+
+# calculate the standard deviation using the obtained output
+
+EpistemicCorrectedVariance(list1Epistemic)
 
 
 }

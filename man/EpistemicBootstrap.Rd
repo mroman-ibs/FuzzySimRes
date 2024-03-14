@@ -4,12 +4,14 @@
 \alias{EpistemicBootstrap}
 \title{Generate a bootstrap sample with the epistemic bootstrap.}
 \usage{
-EpistemicBootstrap(fuzzySample, cutsNumber = 1)
+EpistemicBootstrap(fuzzySample, cutsNumber = 1, ...)
 }
 \arguments{
 \item{fuzzySample}{Sample of fuzzy numbers given in the form of a list or as a single number.}
 
 \item{cutsNumber}{Number of cuts used in the epistemic bootstrap.}
+
+\item{...}{Possible parameters passed to other functions.}
 }
 \value{
 The output is given in the form of a real-valued matrix, where the number of rows is equal to the number of cuts, and the
@@ -34,10 +36,10 @@ set.seed(1234)
 
 # generate the initial sample consisting of 5 trapezoidal fuzzy numbers
 
-sample1 <- SimulateSample(5,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+sample1 <- SimulateSample(5,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 # apply the epistemic bootstrap with 10 cuts

@@ -61,17 +61,17 @@
 #'
 #' # generate two independent initial fuzzy samples
 #'
-#' list1<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-#' increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' list1<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+#' incrCorePD="rexp", parIncrCorePD=list(rate=2),
+#' suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+#' suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 #' type="trapezoidal")
 #'
 #'
-#' list2<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-#' increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' list2<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+#' incrCorePD="rexp", parIncrCorePD=list(rate=2),
+#' suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+#' suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 #' type="trapezoidal")
 #'
 #' # apply the Kolmogorov-Smirnov two sample test for two different samples
@@ -186,12 +186,12 @@ MultiStatisticEpistemicTest <- function(sample1,sample2,bootstrapMethod="std",te
 
   if(bootstrapMethod=="std") {
 
-    outputSample1 <- EpistemicBootstrap(sample1,cutsNumber = cutsNumber)
+    outputSample1 <- EpistemicBootstrap(sample1,cutsNumber = cutsNumber,...)
 
 
     if(oneSample == FALSE) {
 
-      outputSample2 <- EpistemicBootstrap(sample2,cutsNumber = cutsNumber)
+      outputSample2 <- EpistemicBootstrap(sample2,cutsNumber = cutsNumber,...)
 
     }
 
@@ -200,11 +200,11 @@ MultiStatisticEpistemicTest <- function(sample1,sample2,bootstrapMethod="std",te
 
   if(bootstrapMethod=="anti") {
 
-    outputSample1 <- AntitheticBootstrap(sample1,cutsNumber = cutsNumber)
+    outputSample1 <- AntitheticBootstrap(sample1,cutsNumber = cutsNumber,...)
 
     if(oneSample == FALSE) {
 
-      outputSample2 <- AntitheticBootstrap(sample2,cutsNumber = cutsNumber)
+      outputSample2 <- AntitheticBootstrap(sample2,cutsNumber = cutsNumber,...)
 
     }
 
@@ -232,7 +232,7 @@ MultiStatisticEpistemicTest <- function(sample1,sample2,bootstrapMethod="std",te
 
   # combine p-values
 
-  output <- CombinePValues(vectorPValues, combineMethod)
+  output <- CombinePValues(vectorPValues, combineMethod,...)
 
   return(output)
 

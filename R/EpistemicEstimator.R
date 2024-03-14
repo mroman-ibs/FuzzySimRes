@@ -4,13 +4,18 @@
 #' `EpistemicEstimator` calculates the selected estimator and its SE/MSE for the fuzzy sample using the epistemic bootstrap approach.
 #'
 #' @details
-#' For the given initial sample, the function calculates the selected estimator
+#' For the initial sample given by \code{fuzzySample}, the function calculates the selected estimator
 #' (provided by the respective function as the \code{estimator} parameter) using the standard (if \code{bootstrapMethod} is set to
 #' \code{"std"}) or the antithetic (when \code{bootstrapMethod="anti"}) epistemic bootstrap.
 #' The initial sample should be given in the form of a list of numbers or a single number.
 #' These values have to be the fuzzy numbers defined as in the \code{FuzzyNumbers} package.
 #' The estimators are calculated for each epistemic bootstrap sample (i.e. based on the rows of the output matrix),
 #' then these values are averaged to give the final output (i.e. the mean for all cuts is obtained).
+#'
+#' If, instead of fuzzy sample, the matrix is given by the parameter \code{fuzzySample}, then this matrix is treated
+#' as the direct output from the epistemic or the antithetic bootstrap.
+#' Then, the respective estimator is directly calculated.
+#'
 #' Additionally, the standard error (SE) of this estimator is calculated and its mean squared error (MSE).
 #' This second type of the error is used if some value (other than \code{NA}) is provided for the \code{trueValue} parameter.
 #'
@@ -23,7 +28,8 @@
 #' \code{\link{EpistemicCorrectedVariance}} for the corrected epistemic estimator of the variance
 #'
 #'
-#' @param fuzzySample Sample of fuzzy numbers given in the form of a list or as a single number.
+#' @param fuzzySample Sample of fuzzy numbers (given in the form of a list or as a single number) or a matrix with already sampled values (i.e.
+#' output of function \code{AntitheticBootstrap} or \code{EpistemicBootstrap}).
 #'
 #' @param estimator Real-valued function used to calculate the respective estimator.
 #'
@@ -34,6 +40,8 @@
 #' @param trueValue The true (usually unknown) value of the estimated parameter. If value other than \code{NA} is used,
 #' then the MSE is calculated.
 #'
+#' @param ... Possible parameters passed to other functions.
+#'
 #' @examples
 #'
 #' # seed PRNG
@@ -42,10 +50,10 @@
 #'
 #' # generate an initial fuzzy sample
 #'
-#' list1<-SimulateSample(20,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-#' increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-#' supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-#' supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+#' list1<-SimulateSample(20,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+#' incrCorePD="rexp", parIncrCorePD=list(rate=2),
+#' suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+#' suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 #' type="trapezoidal")
 #'
 #'
@@ -57,6 +65,14 @@
 #' # calculate the median using the antithetic epistemic bootstrap approach
 #'
 #' EpistemicEstimator(list1$value,estimator="median",cutsNumber = 30,bootstrapMethod="anti")
+#'
+#' # use the epistemic bootstrap
+#'
+#' list1Epistemic<-EpistemicBootstrap(list1$value,cutsNumber = 10)
+#'
+#' # calculate the standard deviation using the obtained output
+#'
+#' EpistemicEstimator(list1Epistemic,estimator="sd")
 #'
 #'
 #'@references
@@ -82,7 +98,7 @@
 
 
 
-EpistemicEstimator <- function(fuzzySample, estimator="sd", cutsNumber=1, bootstrapMethod="std", trueValue = NA)
+EpistemicEstimator <- function(fuzzySample, estimator="sd", cutsNumber=1, bootstrapMethod="std", trueValue = NA,...)
 {
   # check parameters
 
@@ -96,12 +112,28 @@ EpistemicEstimator <- function(fuzzySample, estimator="sd", cutsNumber=1, bootst
     stop("Parameter cutsNumber should be integer value and > 0")
   }
 
-  if(!isFuzzyData(fuzzySample))
+  # have we got fuzzy sample or output from epistemic bootstrap?
+
+  if(is.matrix(fuzzySample))
   {
 
-    stop("Parameter fuzzySample should consist of fuzzy numbers - single value or list")
+    outputMatrix = TRUE
+
+  } else {
+
+    outputMatrix = FALSE
+
+    if(!isFuzzyData(fuzzySample))
+    {
+
+      stop("Parameter fuzzySample should consist of fuzzy numbers - single value or list")
+
+    }
+
 
   }
+
+
 
   if(length(bootstrapMethod) > 1)
   {
@@ -129,19 +161,32 @@ EpistemicEstimator <- function(fuzzySample, estimator="sd", cutsNumber=1, bootst
   }
 
 
-  # generate epistemic bootstrap samples
+  # generate epistemic bootstrap samples if it still necessary
 
-  if(bootstrapMethod=="std") {
+  if(!outputMatrix)
+  {
 
-    outputSample <- EpistemicBootstrap(fuzzySample,cutsNumber = cutsNumber)
+    if(bootstrapMethod=="std") {
+
+      outputSample <- EpistemicBootstrap(fuzzySample,cutsNumber = cutsNumber,...)
+
+    }
+
+    if(bootstrapMethod=="anti") {
+
+      outputSample <- AntitheticBootstrap(fuzzySample,cutsNumber = cutsNumber,...)
+
+    }
+
+  } else {
+
+    # instead of fuzzy sample, we have matrix with values from epistemic bootstrap
+
+    outputSample <- fuzzySample
 
   }
 
-  if(bootstrapMethod=="anti") {
 
-    outputSample <- AntitheticBootstrap(fuzzySample,cutsNumber = cutsNumber)
-
-  }
 
   # calculate the estimator
 

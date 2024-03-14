@@ -4,13 +4,15 @@
 \alias{CombinePValues}
 \title{Combine several p-values to obtain a single value.}
 \usage{
-CombinePValues(pValues, method = "simes")
+CombinePValues(pValues, method = "simes", ...)
 }
 \arguments{
 \item{pValues}{A vector of the p-values.}
 
 \item{method}{Method used to combine the p-values. The possible methods are the same as in the \code{palasso} package
 plus the \code{mean} approach.}
+
+\item{...}{Possible parameters passed to other functions.}
 }
 \value{
 The output is given as a single real-valued number.

@@ -4,12 +4,14 @@
 \alias{AntitheticBootstrap}
 \title{Generate a bootstrap sample with the epistemic antithetic bootstrap.}
 \usage{
-AntitheticBootstrap(fuzzySample, cutsNumber = 1)
+AntitheticBootstrap(fuzzySample, cutsNumber = 1, ...)
 }
 \arguments{
 \item{fuzzySample}{Sample of fuzzy numbers given in the form of a list or as a single number.}
 
 \item{cutsNumber}{Number of cuts used in the antithetic epistemic bootstrap.}
+
+\item{...}{Possible parameters passed to other functions.}
 }
 \value{
 The output is given in the form of the real-valued matrix, where the number of rows is equal to the number of cuts, and the
@@ -35,10 +37,10 @@ set.seed(1234)
 
 # generate the initial sample consisting of 5 trapezoidal fuzzy numbers
 
-sample1 <- SimulateSample(5,originalRandomDist="rnorm",parametersOriginalRD=list(mean=0,sd=1),
-increasesCoreRandomDist="rexp", parametersCoreIncreasesRD=list(rate=2),
-supportLeftRandomDist="runif",parametersSupportLeftRD=list(min=0,max=0.6),
-supportRightRandomDist="runif", parametersSupportRightRD=list(min=0,max=0.6),
+sample1 <- SimulateSample(5,originalPD="rnorm",parOriginalPD=list(mean=0,sd=1),
+incrCorePD="rexp", parIncrCorePD=list(rate=2),
+suppLeftPD="runif",parSuppLeftPD=list(min=0,max=0.6),
+suppRightPD="runif", parSuppRightPD=list(min=0,max=0.6),
 type="trapezoidal")
 
 # apply the antithetic bootstrap with 10 cuts
