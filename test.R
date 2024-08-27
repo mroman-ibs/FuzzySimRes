@@ -1045,3 +1045,7 @@ system.time(SimulateSample(n=10000,originalPD="rnorm",parOriginalPD=list(mean=0.
 EpistemicBootstrap(wynik1$value,cutsNumber = 10)
 
 devtools::check(remote = TRUE, manual = TRUE)
+
+install.packages("gitcreds")
+library(gitcreds)
+gitcreds_set()

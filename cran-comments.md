@@ -1,3 +1,16 @@
+I have prepared the new version (0.4.2, previous version: 0.4.1) of my package. 
+
+The main differences are listed below:
+- Corrected errors in kolmim.c
+
+
+
+I have prepared the new version (0.4.1, previous version: 0.4.0) of my package. 
+
+The main differences are listed below:
+- Corrected e-mail addresses in DESCRIPTION
+
+
 I have prepared the new version (0.4.0, previous version: 0.3.0) of my package. 
 
 The main differences are listed below:
@@ -5,14 +18,6 @@ The main differences are listed below:
 - Now EpistemicEstimator can be used with the output provided by EpistemicBootstrap or AntitheticBootstrap
 - Paremeter names for SimulateFuzzyNumber and SimulateSample are shortened
 - Added new citation
-
-R CMD check results
-
-Duration: 53.7s
-
-0 errors ✔ | 0 warnings ✔ | 0 notes ✔
-
-R CMD check succeeded
 
 
 

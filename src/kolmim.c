@@ -96,12 +96,12 @@ SEXP pkolmim (SEXP sx, SEXP sn, SEXP snx) {
     if (mm < m) mm = m;
   }
   /* iterate */
-  buf = (double *) Calloc((mm > 1) ? (3 * mm - 2) : 2, double);
+  buf = (double *) calloc((mm > 1) ? (3 * mm - 2) : 2, sizeof(double));
   PROTECT(sp = allocVector(REALSXP, nx));
   p = REAL(sp);
   for (i = 0; i < nx; i++) p[i] = K(n[i], x[i], buf);
   UNPROTECT(1);
-  Free(buf);
+  free(buf);
   return sp;
 }
 
@@ -110,9 +110,9 @@ SEXP pkolmim2x (SEXP sx, SEXP sn) {
   int n = asInteger(sn);
   int k = (int) (n * x) + 1;
   int m = 2 * k - 1;
-  double *buf = (double *) Calloc(3 * m - 2, double);
+  double *buf = (double *) calloc(3 * m - 2, sizeof(double));
   double p = K(n, x, buf);
-  Free(buf);
+  free(buf);
   return ScalarReal(p);
 }
 
