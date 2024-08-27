@@ -1,4 +1,4 @@
-I have prepared the new version (0.4.2, previous version: 0.4.1) of my package. 
+I have prepared the new version (0.4.3, previous version: 0.4.1) of my package. 
 
 The main differences are listed below:
 - Corrected errors in kolmim.c
