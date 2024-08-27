@@ -1049,3 +1049,15 @@ devtools::check(remote = TRUE, manual = TRUE)
 install.packages("gitcreds")
 library(gitcreds)
 gitcreds_set()
+
+
+library(devtools)
+library(rhub)
+
+rhub::platforms()
+
+rhub::rhub_setup()
+
+rhub::rhub_check()
+
+rhub::rhub_doctor()
