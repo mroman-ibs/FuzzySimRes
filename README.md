@@ -5,7 +5,7 @@
 
 The goal of FuzzySimRes, a library written in R, is to simulate
 synthetic fuzzy data and provide so-called epistemic bootstrap
-procedures.
+procedures (see (Romaniuk, Grzegorzewski, and Parchami 2024)).
 
 The simulation procedures are useful to generate synthetic samples that
 can be applied in statistical inference (see, e.g., (P. Grzegorzewski,
@@ -15,7 +15,8 @@ trapezoidal ones).
 
 The epistemic bootstrap is used for epistemic fuzzy data (see (Couso and
 Dubois 2014)) and it allows (see (P. Grzegorzewski and Romaniuk 2021;
-Przemyslaw Grzegorzewski and Romaniuk 2022)):
+Przemyslaw Grzegorzewski and Romaniuk 2022; Romaniuk, Grzegorzewski, and
+Parchami 2024)):
 
 - application of special resampling procedures,
 - application of real-valued statistical tests for fuzzy data,
@@ -197,7 +198,8 @@ AverageStatisticEpistemicTest(list1$value,sample2=NULL,cutsNumber = 30,y="pnorm"
 
 ## References
 
-<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent"
+entry-spacing="0">
 
 <div id="ref-Couso2014" class="csl-entry">
 
@@ -261,6 +263,15 @@ and Computer Science* 32 (2): 285–97.
 Parchami, Abbas, Przemyslaw Grzegorzewski, and Maciej Romaniuk. 2024.
 “Statistical Simulations with LR Random Fuzzy Numbers.” *Statistical
 Papers*. <https://doi.org/10.1007/s00362-024-01533-5>.
+
+</div>
+
+<div id="ref-RJ-2024-016" class="csl-entry">
+
+Romaniuk, Maciej, Przemysław Grzegorzewski, and Abbas Parchami. 2024.
+“FuzzySimRes: Epistemic Bootstrap – an Efficient Tool for Statistical
+Inference Based on Imprecise Data.” *The R Journal* 16 (2): 175–90.
+<https://doi.org/10.32614/RJ-2024-016>.
 
 </div>
 

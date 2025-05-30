@@ -102,6 +102,10 @@ Communications in Computer and Information Science, CCIS 1602, pp. 494-507, Spri
 
 Gagolewski, M., Caha, J. (2021) FuzzyNumbers Package: Tools to deal with fuzzy numbers in R.
 R package version 0.4-7, https://cran.r-project.org/web/packages=FuzzyNumbers
+
+Romaniuk, M., Grzegorzewski, P., Parchami, A. (2024)
+FuzzySimRes: Epistemic Bootstrap - an Efficient Tool for Statistical Inference Based on Imprecise Data.
+R Journal, 16(2)
 }
 \seealso{
 \code{\link{MultiStatisticEpistemicTest}} for the epistemic bootstrap test related to multi-statistic approach,

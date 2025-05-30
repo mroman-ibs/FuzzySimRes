@@ -131,7 +131,11 @@ R package version 0.4-7, https://cran.r-project.org/web/packages=FuzzyNumbers
 
 Parchami, A., Grzegorzewski, P., Romaniuk, M. (2024)
 Statistical simulations with LR random fuzzy numbers.
-Statistical Papers
+Statistical Papers, 65
+
+Romaniuk, M., Grzegorzewski, P., Parchami, A. (2024)
+FuzzySimRes: Epistemic Bootstrap - an Efficient Tool for Statistical Inference Based on Imprecise Data.
+R Journal, 16(2)
 }
 \seealso{
 \code{\link{SimulateFuzzyNumber}} for generation of the single random fuzzy number

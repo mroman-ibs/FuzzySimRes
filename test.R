@@ -1061,3 +1061,13 @@ rhub::rhub_setup()
 rhub::rhub_check()
 
 rhub::rhub_doctor()
+
+devtools::check(build_args = "--compact-vignettes=gs+qpdf")
+
+getwd()
+
+tools::compactPDF(paths="RJ-2024_016.pdf",gs_quality = "ebook")
+
+devtools::build(args = "--compact-vignettes=gs+qpdf")
+
+citation("FuzzySimRes")

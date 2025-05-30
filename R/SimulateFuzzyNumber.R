@@ -118,9 +118,11 @@
 #'
 #' Parchami, A., Grzegorzewski, P., Romaniuk, M. (2024)
 #' Statistical simulations with LR random fuzzy numbers.
-#' Statistical Papers
+#' Statistical Papers, 65
 #'
-#'
+#' Romaniuk, M., Grzegorzewski, P., Parchami, A. (2024)
+#' FuzzySimRes: Epistemic Bootstrap - an Efficient Tool for Statistical Inference Based on Imprecise Data.
+#' R Journal, 16(2)
 #'
 #'
 #' @export

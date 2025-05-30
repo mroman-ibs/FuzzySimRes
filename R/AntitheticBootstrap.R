@@ -65,7 +65,9 @@
 #' Gagolewski, M., Caha, J. (2021) FuzzyNumbers Package: Tools to deal with fuzzy numbers in R.
 #' R package version 0.4-7, https://cran.r-project.org/web/packages=FuzzyNumbers
 #'
-#'
+#' Romaniuk, M., Grzegorzewski, P., Parchami, A. (2024)
+#' FuzzySimRes: Epistemic Bootstrap - an Efficient Tool for Statistical Inference Based on Imprecise Data.
+#' R Journal, 16(2)
 #'
 #'
 #' @export

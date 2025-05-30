@@ -1,3 +1,10 @@
+I have prepared the new version (0.4.4, previous version: 0.4.3) of my package. 
+
+The main differences are listed below:
+- Added vignette (paper from R Journal)
+- Updated citation and references
+
+
 I have prepared the new version (0.4.3, previous version: 0.4.1) of my package. 
 
 The main differences are listed below:
