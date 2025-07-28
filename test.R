@@ -1053,9 +1053,11 @@ gitcreds_set()
 
 library(devtools)
 library(rhub)
+library(rhub)
 
 rhub::platforms()
 
+rhub::rhub_setup()
 rhub::rhub_setup()
 
 rhub::rhub_check()
@@ -1071,3 +1073,5 @@ tools::compactPDF(paths="RJ-2024_016.pdf",gs_quality = "ebook")
 devtools::build(args = "--compact-vignettes=gs+qpdf")
 
 citation("FuzzySimRes")
+
+?cheeseQualityData

@@ -23,9 +23,11 @@ Parchami 2024)):
 - estimation of statistical characteristics (like the mean) of a fuzzy
   sample.
 
-Additionally, the special epistemic fuzzy real-life data set is provided
-(see (Faraz and Shapiro 2010)) which consists of triangular fuzzy
-numbers.
+Additionally, the special epistemic fuzzy real-life datasets are
+provided. The first one (see (Faraz and Shapiro 2010)) consists of
+triangular fuzzy numbers. The second one (see (Ramos-Guajardo,
+Blanco-Fernández, and González-Rodríguez 2019)) contains trapezoidal
+fuzzy numbers.
 
 The fuzzy data used in this package should be defined as the variables
 introduced in (Gagolewski and Caha 2021) (as, e.g., triangular fuzzy
@@ -68,9 +70,11 @@ The following procedures are available in the library:
   - *KSTestCriticalValue* - calculation of the p-value for a given
     critical value in the case of the one- and two-sample
     Kolmogorov-Smirnow test.
-- Dataset:
-- *controlChartData* - the real-life fuzzy epistemic data concerning
-  electronic circuit thickness.
+- Datasets:
+  - *controlChartData* - the real-life fuzzy epistemic data concerning
+    electronic circuit thickness,
+  - *cheeseQualityData* - the real-life fuzzy epistemic data containing
+    the experts’ opinions about quality of the Gamonedo cheese quality.
 
 ## Installation
 
@@ -220,7 +224,7 @@ Random Variables to Control Charts.” *Fuzzy Sets and Systems* 161 (20):
 <div id="ref-Gagolewski" class="csl-entry">
 
 Gagolewski, Marek, and Jan Caha. 2021. *FuzzyNumbers Package: Tools to
-Deal with Fuzzy Numbers in r*.
+Deal with Fuzzy Numbers in R*.
 <https://github.com/gagolews/FuzzyNumbers/>.
 
 </div>
@@ -255,6 +259,7 @@ Data.” In *Joint Proceedings of IFSA-EUSFLAT-AGOP 2021 Conferences*,
 Grzegorzewski, Przemyslaw, and Maciej Romaniuk. 2022. “Bootstrap Methods
 for Epistemic Fuzzy Data.” *International Journal of Applied Mathematics
 and Computer Science* 32 (2): 285–97.
+<https://doi.org/10.34768/amcs-2022-0021>.
 
 </div>
 
@@ -262,7 +267,18 @@ and Computer Science* 32 (2): 285–97.
 
 Parchami, Abbas, Przemyslaw Grzegorzewski, and Maciej Romaniuk. 2024.
 “Statistical Simulations with LR Random Fuzzy Numbers.” *Statistical
-Papers*. <https://doi.org/10.1007/s00362-024-01533-5>.
+Papers* 65: 3583–3600. <https://doi.org/10.1007/s00362-024-01533-5>.
+
+</div>
+
+<div id="ref-ramos2019" class="csl-entry">
+
+Ramos-Guajardo, A. B., A. Blanco-Fernández, and G. González-Rodríguez.
+2019. “Applying Statistical Methods with Imprecise Data to Quality
+Control in Cheese Manufacturing.” In *Soft Modeling in Industrial
+Manufacturing*, edited by P. Grzegorzewski, A. Kochanski, and J.
+Kacprzyk, 127–47. Springer.
+<https://doi.org/10.1007/978-3-030-03201-2_8>.
 
 </div>
 

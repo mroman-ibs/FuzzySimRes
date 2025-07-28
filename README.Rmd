@@ -28,7 +28,7 @@ The epistemic bootstrap is used for epistemic fuzzy data (see [@Couso2014]) and 
 + application of real-valued statistical tests for fuzzy data,
 + estimation of statistical characteristics (like the mean) of a fuzzy sample.
 
-Additionally, the special epistemic fuzzy real-life data set is provided (see [@FARAZ20102684]) which consists of triangular fuzzy numbers.
+Additionally, the special epistemic fuzzy real-life datasets are provided. The first one (see [@FARAZ20102684]) consists of triangular fuzzy numbers. The second one (see [@ramos2019]) contains trapezoidal fuzzy numbers.
 
 The fuzzy data used in this package should be defined as the variables introduced in [@Gagolewski] (as, e.g., triangular fuzzy numbers).
 
@@ -57,8 +57,9 @@ The following procedures are available in the library:
   + *CombinePValues* - combining the p-values of a statistical test into a single value,
   + *KSTestCriticalValue* - calculation of the p-value for a given critical value in the case of the one- and two-sample Kolmogorov-Smirnow test.
   
-+ Dataset:
- + *controlChartData* - the real-life fuzzy epistemic data concerning electronic circuit thickness.
++ Datasets:
+  + *controlChartData* - the real-life fuzzy epistemic data concerning electronic circuit thickness,
+  + *cheeseQualityData* - the real-life fuzzy epistemic data containing the experts' opinions about quality of the Gamonedo cheese quality.
 
 
 ## Installation

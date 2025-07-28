@@ -1,3 +1,8 @@
+I have prepared the new version (0.4.6, previous version: 0.4.5) of my package. 
+
+The main differences are listed below:
+- Added new dataset (cheeseQualityData)
+
 I have prepared the new version (0.4.5, previous version: 0.4.4) of my package. 
 
 The main differences are listed below:
