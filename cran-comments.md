@@ -1,3 +1,8 @@
+I have prepared the new version (0.4.7, previous version: 0.4.6) of my package. 
+
+The main differences are listed below:
+- Corrected DOI
+
 I have prepared the new version (0.4.6, previous version: 0.4.5) of my package. 
 
 The main differences are listed below:
