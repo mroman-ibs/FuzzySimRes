@@ -166,7 +166,7 @@ SimulateFuzzyNumber <- function(originalPD, parOriginalPD,
 
     origin <- do.call(originalPD, append(1,parOriginalPD))
 
-    rightSupport <- do.call(suppRightPD, append(1,parSuppLeftPD))
+    rightSupport <- do.call(suppRightPD, append(1,parSuppRightPD))
 
     # use proper function to simulate the output
 
@@ -192,7 +192,7 @@ SimulateFuzzyNumber <- function(originalPD, parOriginalPD,
     rightCore <- origin +
       do.call(incrCorePD, append(1,parIncrCorePD))
 
-    rightSupport <- do.call(suppRightPD, append(1,parSuppLeftPD))
+    rightSupport <- do.call(suppRightPD, append(1,parSuppRightPD))
 
     # use proper function to simulate the output
 
@@ -217,7 +217,7 @@ SimulateFuzzyNumber <- function(originalPD, parOriginalPD,
     rightCore <- origin +
       do.call(incrCorePD, append(1,parIncrCorePD))
 
-    rightSupport <- do.call(suppRightPD, append(1,parSuppLeftPD))
+    rightSupport <- do.call(suppRightPD, append(1,parSuppRightPD))
 
     # cat("leftSupport: ", leftSupport, "\n")
     #
